@@ -1,5 +1,33 @@
-header, body
+*
+{
+    background-color: black;
+}
+
+header, p
 {
     display: flex;
-    align-items: center;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+nav
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+nav ul
+{
+    list-style-type: none;
+}
+
+footer ul
+{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
 }
