@@ -10,11 +10,11 @@
     <body>
         <!-- Header of the website -->
         <header>
-            <div id="top_header">
+            <div id="topHeader">
                 <!-- first div is here to center easily but exactly the second div with flex -->
                 <div style="visibility:hidden;">FR | BR</div>
                 <div><a href="home_br.html"><img src="../rsc/images/logo_names_complete.png" alt="Noms Barbara et Thibault" /></a></div>
-                <div id="language_menu"><a href="../fr/presence_fr.html"><img src="../rsc/images/france.png" alt="Logo France" /></a><span style="visibility:hidden;">-</span><span>|</span><span style="visibility:hidden;">-</span><a href="presence_br.html"><img src="../rsc/images/brazil.png" alt="Logo Brésil" /></a></div>
+                <div id="languageMenu"><a href="../fr/presence_fr.html"><img src="../rsc/images/france.png" alt="Logo France" /></a><span style="visibility:hidden;">-</span><span>|</span><span style="visibility:hidden;">-</span><a href="presence_br.html"><img src="../rsc/images/brazil.png" alt="Logo Brésil" /></a></div>
             </div>
 
             <!-- Navigation menu of the website -->
@@ -23,9 +23,15 @@
                     <li><a href="home_br.html">Entrada</a></li>
                     <li><a href="history_br.html">Nossa Historia</a></li>
                     <li><a href="witnesses_br.html">Nossas Testemunias</a></li>
-                    <li><a href="organisation_br.html">Organização</a></li>
+                    <li class="navParentOff"><a href="organisation_br.html">Organização</a>
+                        <ul class="navChildOff">
+                            <li><a href="org/program_br.html">Programa</a></li>
+                            <li><a href="org/trips_br.html">Viagems</a></li>
+                            <li><a href="org/hotels_br.html">Lista de Hoteis</a></li>
+                        </ul>
+                    </li>
                     <li><a href="presents_br.html">Lista de Presentes</a></li>
-                    <li><a id="current_nav" href="presence_br.html">Confirme sua Presencia</a></li>
+                    <li><a id="currentNav" href="presence_br.html">Confirme sua Presencia</a></li>
                 </ul>
             </nav>
         </header>
@@ -84,5 +90,7 @@
             </div>
             <div>Music</div>
         </footer>
+
+        <script type="text/javascript" src="../js/index.js"></script>
     </body>
 </html>

@@ -1,9 +1,13 @@
-*
+:root
 {
-    color: #553A59;
+    --dark: #553A59;
+    --light: #947795;
 }
 
-
+*
+{
+    color: var(--dark);
+}
 
 
 
@@ -22,7 +26,7 @@ header
     padding-top: 20px;
     padding-bottom: 20px;
     box-shadow: 0px 0px 10px 0px #111;
-    background-color: #947795;
+    background-color: var(--light);
 }
 
 /* - Top */
@@ -65,8 +69,8 @@ nav ul li a, nav ul li li a
 
 nav ul li a:hover, nav ul li a:active
 {
-    background-color: #553A59;
-    color: #947795;
+    background-color: var(--dark);
+    color: var(--light);
 }
 
 nav ul > li + li, nav ul li > li
@@ -78,8 +82,8 @@ nav ul > li + li, nav ul li > li
 
 #currentNav
 {
-    background-color: #553A59;
-    color: #947795;
+    background-color: var(--dark);
+    color: var(--light);
 } */
 
 /* - Navigation Rework */
@@ -108,8 +112,8 @@ nav a
 
 nav a:hover, nav a:active
 {
-    background-color: #553A59;
-    color: #947795;
+    background-color: var(--dark);
+    color: var(--light);
 }
 
 nav ul > li + li
@@ -119,8 +123,8 @@ nav ul > li + li
 
 #currentNav
 {
-    background-color: #553A59;
-    color: #947795;
+    background-color: var(--dark);
+    color: var(--light);
 }
 
 li.navParentOff
@@ -161,8 +165,8 @@ li.navParentOff
 
 .navChildOn a
 {
-    background-color: #553A59;
-    color: #947795;
+    background-color: var(--dark);
+    color: var(--light);
 }
 
 .navChildOn a:hover, .navChildOn a:active
@@ -172,8 +176,8 @@ li.navParentOff
 
 .navParentOn a
 {
-    background-color: #553A59;
-    color: #947795;
+    background-color: var(--dark);
+    color: var(--light);
 }
 
 
@@ -206,7 +210,7 @@ footer
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #947795;
+    background-color: var(--light);
     box-shadow: 0px 0px 10px 0px #111;
     display: flex;
     flex-direction: row;
