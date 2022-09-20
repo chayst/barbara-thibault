@@ -1,0 +1,334 @@
+// Variable declaration for the header template
+let currentNav = document.getElementsByTagName('meta')[0].getAttribute('name');
+
+let navForward = '';
+let navForwardOrg = '';
+let navBack = '';
+
+let language = 'fr';
+
+let homeLink = 'index.html';
+
+let homeTitle = 'Accueil';
+let historyTitle = 'Notre Histoire';
+let witnessesTitle = 'Nos Témoins';
+let organisationTitle = 'Organisation';
+let programTitle = 'Programme';
+let tripsTitle = 'Voyages';
+let hotelsTitle = "Liste d'Hôtels";
+let presentsTitle = 'Liste de Cadeaux';
+let presenceTitle = 'Confirmez votre présence';
+
+
+let homeStatus = '';
+let historyStatus = '';
+let witnessesStatus = '';
+let organisationStatus = '';
+let presentsStatus = '';
+let presenceStatus = '';
+
+let redirectFR = '';
+let redirectBR = '';
+
+
+// FR - Conditions of attributions when on french pages
+//particular case of index
+if (currentNav == 'index') {
+    navForward = navForwardOrg = 'fr/';
+    homeStatus = "id='currentNav'";
+    redirectFR = homeLink;
+    redirectBR = "br/home_br.html";
+}
+
+//general rule
+if (currentNav.includes('_fr')) {
+    navBack = '../';
+    homeLink = '../' + homeLink;
+    redirectFR = currentNav + '.html';
+    redirectBR = '../br/' + currentNav.slice(0, -2) + 'br.html';
+}
+
+//menus
+if (currentNav == 'history_fr') {
+    historyStatus = "id='currentNav'";
+} else if (currentNav == 'witnesses_fr') {
+    witnessesStatus = "id='currentNav'";
+} else if (currentNav == 'presents_fr') {
+    presentsStatus = "id='currentNav'";
+} else if (currentNav == 'presence_fr') {
+    presenceStatus = "id='currentNav'";
+} else if (currentNav == 'organisation_fr') {
+    organisationStatus = "id='currentNav'";
+}
+
+//submenus
+if (currentNav == 'program_fr' || currentNav == 'trips_fr' || currentNav == 'hotels_fr') {
+    organisationStatus = "id='currentNav'";
+    navBack = '../../';
+    homeLink = '../' + homeLink;
+    redirectBR = '../../br/org/' + currentNav.slice(0, -2) + 'br.html';
+}
+
+
+
+// BR - Conditions of attributions when on portuguese pages
+//general rule
+if (currentNav.includes('_br')) {
+    //rename nav items
+    homeTitle = 'Entrada';
+    historyTitle = 'Nossa Historia';
+    witnessesTitle = 'Nossas Testemunias';
+    organisationTitle = 'Organização';
+    programTitle = 'Programma';
+    tripsTitle = 'Viagems';
+    hotelsTitle = 'Lista de Hoteis';
+    presentsTitle = 'Lista de Presentes';
+    presenceTitle = 'Confirme sua Presencia';
+
+    language = 'br';
+    navBack = '../';
+    homeLink = 'home_br.html';
+    redirectBR = currentNav + '.html';
+    redirectFR = '../fr/' + currentNav.slice(0, -2) + 'fr.html';
+}
+
+//menus
+if (currentNav == 'home_br') {
+    homeStatus = "id='currentNav'";
+    redirectFR = '../index.html';
+} else if (currentNav == 'history_br') {
+    historyStatus = "id='currentNav'";
+} else if (currentNav == 'witnesses_br') {
+    witnessesStatus = "id='currentNav'";
+} else if (currentNav == 'presents_br') {
+    presentsStatus = "id='currentNav'";
+} else if (currentNav == 'presence_br') {
+    presenceStatus = "id='currentNav'";
+} else if (currentNav == 'organisation_br') {
+    organisationStatus = "id='currentNav'";
+}
+
+// submenus
+if (currentNav == 'program_br' || currentNav == 'trips_br' || currentNav == 'hotels_br') {
+    organisationStatus = "id='currentNav'";
+    navBack = '../../';
+    homeLink = '../home_br';
+    redirectFR = '../../fr/org/' + currentNav.slice(0, -2) + 'fr.html';
+}
+
+
+
+
+// TEMPLATE CREATION
+const headerTemplate = document.createElement('template');
+
+headerTemplate.innerHTML = `
+        <style>
+        *
+        {
+            color: var(--dark);
+        }
+
+        /* --- HEADER */
+        header
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            box-shadow: 0px 0px 10px 0px #111;
+            background-color: var(--light);
+        }
+
+        /* - Top */
+        #topHeader
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        #languageMenu
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        #languageMenu:nth-child(2)
+        {
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+
+
+
+        /* - Navigation */
+        nav ul
+        {
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+            justify-content: center;
+        }
+        
+        nav li
+        {
+            display: inline-block;
+            text-transform: uppercase;
+            text-align: center;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+        
+        nav a
+        {
+            display: block;
+            padding: 3px 5px;
+            text-decoration: none;
+        }
+        
+        nav a:hover, nav a:active
+        {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        nav ul > li + li
+        {
+            border-left: 1px solid;
+        }
+        
+        #currentNav
+        {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        li.navParentOff
+        {
+            position: relative;
+        }
+        
+        .navChildOff
+        {
+            display: none;
+        }
+        
+        .navChildOn
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: absolute;
+            margin-left: -40px;
+            z-index: 1;
+        }
+        
+        .navChildOn li
+        {
+            padding-right: 0px;
+            padding-left: 0px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            margin-top: 3px;
+            margin-bottom: -3px;
+            border-left: none;
+        }
+        
+        .navChildOn li + li
+        {
+            border-top: 1px solid;
+        }
+        
+        .navChildOn a
+        {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        .navChildOn a:hover, .navChildOn a:active
+        {
+            opacity: 0.8;
+        }
+        
+        .navParentOn a
+        {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        </style>
+
+
+    <header>
+        <div id="topHeader">
+            <!-- first div is here to center easily but exactly the second div with flex -->
+            <div style="visibility:hidden;">FR | BR</div>
+            <div><a href="` + homeLink + `"><img src="` + navBack + `rsc/images/logo_names_complete.png" alt="Noms Barbara et Thibault" /></a></div>
+            <div id="languageMenu"><a href="` + redirectFR + `"><img src="` + navBack + `rsc/images/france.png" alt="Logo France" /></a><span style="visibility:hidden;">-</span><span>|</span><span style="visibility:hidden;">-</span><a href="` + redirectBR + `"><img src="` + navBack + `rsc/images/brazil.png" alt="Logo Brésil" /></a></div>
+        </div>
+
+        <!-- Navigation menu of the website -->
+        <nav>
+            <ul>
+                <li><a ` + homeStatus + `href="` + homeLink + `">` + homeTitle + `</a></li>
+                <li><a ` + historyStatus + `href="` + navForward + `history_` + language + `.html">` + historyTitle + `</a></li>
+                <li><a ` + witnessesStatus + `href="` + navForward + `witnesses_` + language + `.html">` + witnessesTitle + `</a></li>
+                <li class="navParentOff"><a ` + organisationStatus + `href="` + navForward + `organisation_` + language + `.html">` + organisationTitle + `</a>
+                    <ul class="navChildOff">
+                        <li><a href="` + navForwardOrg + `org/program_` + language + `.html">` + programTitle + `</a></li>
+                        <li><a href="` + navForwardOrg + `org/trips_` + language + `.html">` + tripsTitle + `</a></li>
+                        <li><a href="` + navForwardOrg + `org/hotels_` + language + `.html">` + hotelsTitle + `</a></li>
+                    </ul>
+                </li>
+                <li><a ` + presentsStatus + `href="` + navForward + `presents_` + language + `.html">` + presentsTitle + `</a></li>
+                <li><a ` + presenceStatus + `href="` + navForward + `presence_` + language + `.html">` + presenceTitle + `</a></li>
+            </ul>
+                
+        </nav>
+        <script src="js/index.js" type="text/javascript" defer></script>
+    </header>
+`;
+
+
+// CREATION OF HTML ELEMENT + IMPORT
+class Header extends HTMLElement {
+    constructor() {
+        super();
+    }
+
+    connectedCallback() {
+        const shadowRoot = this.attachShadow({ mode: 'open' });
+        shadowRoot.appendChild(headerTemplate.content);
+        
+        // Navigation hover logic
+        let navParents = this.shadowRoot.querySelectorAll('.navParentOff');
+
+        let displayNavChild = function() {
+            this.classList.replace("navParentOff", "navParentOn");
+            this.children[1].classList.replace("navChildOff", "navChildOn");
+        }
+
+        let undisplayNavChild = function() {
+            this.classList.replace("navParentOn", "navParentOff");
+            this.children[1].classList.replace("navChildOn", "navChildOff");
+        }
+
+        for (var i = 0; i < navParents.length; i++) {
+            navParents[i].addEventListener('mouseenter', displayNavChild);
+        }
+
+        for (var i = 0; i < navParents.length; i++) {
+            navParents[i].addEventListener('mouseleave', undisplayNavChild);
+        }
+    }
+}
+
+customElements.define('header-component', Header);
