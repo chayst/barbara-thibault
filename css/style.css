@@ -4,6 +4,11 @@
 }
 
 
+
+
+
+
+
 /* --- HEADER */
 header
 {
@@ -21,7 +26,7 @@ header
 }
 
 /* - Top */
-#top_header
+#topHeader
 {
     display: flex;
     flex-direction: row;
@@ -30,21 +35,21 @@ header
     margin-bottom: 20px;
 }
 
-#language_menu
+#languageMenu
 {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#language_menu:nth-child(2)
+#languageMenu:nth-child(2)
 {
     margin-left: 2px;
     margin-right: 2px;
 }
 
-/* - Navigation */
-nav ul
+/* - Navigation
+nav ul, nav ul li
 {
     display: flex;
     flex-direction: row;
@@ -53,9 +58,9 @@ nav ul
     text-transform: uppercase;
 }
 
-nav ul li a
+nav ul li a, nav ul li li a
 {
-    padding: 5px;
+    padding: 3px 5px;
 }
 
 nav ul li a:hover, nav ul li a:active
@@ -64,18 +69,116 @@ nav ul li a:hover, nav ul li a:active
     color: #947795;
 }
 
-nav ul > li + li
+nav ul > li + li, nav ul li > li
 {
     margin-left: 5px;
     padding-left: 5px;
     border-left: 1px solid;
 }
 
-#current_nav
+#currentNav
+{
+    background-color: #553A59;
+    color: #947795;
+} */
+
+/* - Navigation Rework */
+nav ul
+{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: center;
+}
+
+nav li
+{
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+nav a
+{
+    display: block;
+    padding: 3px 5px;
+}
+
+nav a:hover, nav a:active
 {
     background-color: #553A59;
     color: #947795;
 }
+
+nav ul > li + li
+{
+    border-left: 1px solid;
+}
+
+#currentNav
+{
+    background-color: #553A59;
+    color: #947795;
+}
+
+li.navParentOff
+{
+    position: relative;
+}
+
+.navChildOff
+{
+    display: none;
+}
+
+.navChildOn
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: absolute;
+    margin-left: -40px;
+    z-index: 1;
+}
+
+.navChildOn li
+{
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-top: 3px;
+    margin-bottom: -3px;
+    border-left: none;
+}
+
+.navChildOn li + li
+{
+    border-top: 1px solid;
+}
+
+.navChildOn a
+{
+    background-color: #553A59;
+    color: #947795;
+}
+
+.navChildOn a:hover, .navChildOn a:active
+{
+    opacity: 0.8;
+}
+
+.navParentOn a
+{
+    background-color: #553A59;
+    color: #947795;
+}
+
+
+
+
 
 
 
@@ -89,12 +192,9 @@ body
     padding-bottom: 200px;
 }
 
-body p
-{
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-}
+
+
+
 
 
 
@@ -145,21 +245,21 @@ h1
     margin-top: 100px;
     margin-bottom: 40px;
     text-align: center;
-    box-shadow: 0px 0px 0px 0px #111;
+    box-shadow: 0px 10px 15px -15px #111;
 }
 
 
 
 /* --- SPECIFIC TO SINGLE PAGE */
 /* - trips */
-#trip_1, #trip_3
+#trip1, #trip3
 {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-#trip_2
+#trip2
 {
     display: flex;
     flex-direction: row-reverse;
