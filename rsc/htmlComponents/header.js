@@ -119,7 +119,7 @@ if (currentNav == 'info_br' || currentNav == 'program_br' || currentNav == 'trip
     navBack = '../../';
     navForward = '../';
     navForwardOrg = '';
-    homeLink = '../home_br';
+    homeLink = '../home_br.html';
     redirectFR = '../../fr/org/' + currentNav.slice(0, -2) + 'fr.html';
 }
 
@@ -248,6 +248,7 @@ headerTemplate.innerHTML = `
             margin-top: 3px;
             margin-bottom: -3px;
             border-left: none;
+            text-align: left;
         }
         
         .navChildOn li + li
@@ -278,8 +279,8 @@ headerTemplate.innerHTML = `
         <div id="topHeader">
             <!-- first div is here to center easily but exactly the second div with flex -->
             <div style="visibility:hidden;">FR | BR</div>
-            <div><a href="` + homeLink + `"><img src="` + navBack + `rsc/images/logo_names_complete.png" alt="Noms Barbara et Thibault" /></a></div>
-            <div id="languageMenu"><a href="` + redirectFR + `"><img src="` + navBack + `rsc/images/france.png" alt="Logo France" /></a><span style="visibility:hidden;">-</span><span>|</span><span style="visibility:hidden;">-</span><a href="` + redirectBR + `"><img src="` + navBack + `rsc/images/brazil.png" alt="Logo Brésil" /></a></div>
+            <div><a href="` + homeLink + `"><img src="` + navBack + `rsc/images/logo_names_heart.png" alt="Noms Barbara et Thibault" /></a></div>
+            <div id="languageMenu"><a href="` + redirectFR + `"><img src="` + navBack + `rsc/icons/france.png" alt="Logo France" /></a><span style="visibility:hidden;">-</span><span>|</span><span style="visibility:hidden;">-</span><a href="` + redirectBR + `"><img src="` + navBack + `rsc/icons/brazil.png" alt="Logo Brésil" /></a></div>
         </div>
 
         <!-- Navigation menu of the website -->

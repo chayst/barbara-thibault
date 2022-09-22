@@ -1,7 +1,7 @@
 :root
 {
-    --dark: #514a52;
-    --light: #d7c7d8;
+    --dark: #5B3121;
+    --light: #F8EDD9;
 }
 
 /* other palette: #553A59;#947795 */
@@ -170,6 +170,17 @@ em
 {
     width: 600px;
     cursor: zoom-out;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+td
+{
+    padding: 3px 5px;
+    border: 1px solid;
 }
 
 
