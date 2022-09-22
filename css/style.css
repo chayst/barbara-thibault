@@ -87,6 +87,7 @@ body
 a
 {
     text-decoration: none;
+    font-size: 1rem;
 }
 
 a:hover
@@ -107,17 +108,25 @@ h1
     margin-bottom: 40px;
     text-align: center;
     box-shadow: 0px 10px 15px -15px #111;
+    font-size: 2.5rem;
+}
+
+h2
+{
+    font-size: 1.7rem;
 }
 
 p
 {
-    text-align: center;
+    text-align: justify;
+    font-size: 1rem;
 }
 
 li
 {
-    text-align: center;
+    text-align: justify;
     list-style-position: inside;
+    font-size: 1rem;
 }
 
 em
@@ -126,15 +135,30 @@ em
 }
 
 
+
+
+
 /* --- SPECIFIC TO SINGLE PAGE --- */
 /* - trips - */
+.tripText
+{
+    max-width: 700px;
+    margin: auto;
+}
+
+.tripText p
+{
+    text-align: center;
+}
+
 #introTripsImages
 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    max-width: 100%;
+    max-width: 1800px;
     height: auto;
+    margin: auto;
 }
 
 .introTripsImage
@@ -175,6 +199,7 @@ em
 table
 {
     border-collapse: collapse;
+    font-size: 1rem;
 }
 
 td
