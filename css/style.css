@@ -183,6 +183,12 @@ td
     border: 1px solid;
 }
 
+td a::after
+{
+    content: url('../rsc/icons/external_link.png');
+    padding-left: 3px;
+}
+
 
 
 
