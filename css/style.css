@@ -9,6 +9,7 @@
 *
 {
     color: var(--dark);
+    font-family:sans-serif;
 }
 
 
@@ -120,6 +121,7 @@ p
 {
     text-align: justify;
     font-size: 1rem;
+    line-height: 1.2rem;
 }
 
 li
@@ -139,6 +141,59 @@ em
 
 
 /* --- SPECIFIC TO SINGLE PAGE --- */
+/* - witnesses - */
+#groomAndBride
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#groomAndBride div
+{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#groomAndBride > div + div
+{
+    border-left: 2px solid;
+}
+
+.witness
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 50px;
+}
+
+.witness p
+{
+    margin-left: 20px;
+    max-width: 400px;
+}
+
+.witness p::first-letter
+{
+    font-size: 2.3rem;
+    line-height: 2.3rem;
+    position: relative;
+    float: left;
+    display: block;
+}
+
+.witness img
+{
+    max-width: 150px;
+    height: auto;
+    border-right: 1px solid var(--dark);
+    padding-right: 20px;
+}
+
+
 /* - trips - */
 .tripText
 {
