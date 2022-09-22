@@ -1,3 +1,17 @@
+// Variable declaration for the header template
+// already declared in header: let currentNav = document.getElementsByTagName('meta')[0].getAttribute('name');
+
+// initialization of language variables in French
+let contact = 'Contactez-nous';
+
+// BR - Conditions of attributions when on portuguese pages
+//general rule
+if (currentNav.includes('_br')) {
+    //rename footer items
+    contact = 'Contatto';
+}
+
+
 const footerTemplate = document.createElement('template');
 
 footerTemplate.innerHTML = `
@@ -15,50 +29,37 @@ footerTemplate.innerHTML = `
             justify-content: space-around;
             align-items: center;
         }
+
+        p
+        {
+            text-align: center;
+        }
             
         a
         {
             text-decoration: none;
-        }
-
-        a:visited
-        {
             color: var(--dark);
         }
         
         a:hover
         {
-            color: white;
+            opacity: 0.8;
         }
-        
-        footer:nth-child(2)
-        {
-            justify-self: center;
-        }
-    
-        table tr td
-        {
-            padding: 5px;
-            padding-left: 30px;
-            padding-right: 30px;
-            text-align: center;
-        }
+
     </style>
 
 
     <footer>
-        <table>
-            <tr>
-                <td><a href="https://www.instagram.com/thibault_chays/">Thibault</a></td>
-                <td><a href="https://www.instagram.com/barbaramendesn/">Bárbara</a></td>
-            </tr>
-            <tr>
-                <td>Chez Monsieur et Madame André Chays<br/>Les Alizés - Bat. A<br/>51, traverse Pourrière<br/>13008 - Marseille, FRANCE</td>
-                <td>Francisco José e Ana Niedja Mendes Nunes<br/>Ed Espaço Veredas II<br/>Avenida das Araucarias, Rua 12 Sul, Lote 10, AP 704<br/>71.939-000 - Aguas Claras, Brasilia DF, BRASIL</td>
-            </tr>
-        </table>
         <div>
-            <a href="mailto:contact@barbara-thibault.fr">Contact</a>
+            <p><a href="https://www.instagram.com/thibault_chays/">Thibault</a></p>
+            <p>Monsieur et Madame André Chays<br/>Les Alizés - Bat. A<br/>51, traverse Pourrière<br/>13008 - Marseille, France</p>
+        </div>
+        <div>
+            <p><a href="https://www.instagram.com/barbaramendesn/">Bárbara</a></p>
+            <p>Francisco José Nunes Ferreira e Ana Niedja Mendes Nunes<br/>Ed Espaço Veredas II<br/>Avenida das Araucarias, Rua 12 Sul, Lote 10, AP 704<br/>71.939-000 - Aguas Claras, Brasilia DF, Brasil</p>
+        </div>
+        <div>
+            <a href="mailto:contact@barbara-thibault.fr">` + contact + `</a>
         </div>
         <div>Music</div>
     </footer>

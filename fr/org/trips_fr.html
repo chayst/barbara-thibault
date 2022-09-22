@@ -2,7 +2,7 @@
 <html>
     <head>
         <!-- En-tête de la page -->
-        <meta charset="utf-8" name="trips_fr" />
+        <meta charset="utf-8" content="width=device-width, initial-scale=1" name="trips_fr" />
         <link rel="stylesheet" href="../../css/style.css" />
         <title>Barbara et Thibault | Propositions de voyages</title>
         <script src="../../rsc/htmlComponents/header.js" type="text/javascript" defer></script>
@@ -11,14 +11,52 @@
     </head>
 
     <body>
+        <!-- For those whose javascript is not enabled -->
+        <noscript>
+            <hr>
+            <p><img src="../../rsc/icons/warning.png" alt="Warning icon" /></p>
+            <p>Please note this website is using JavaScript! You see this message if your browser does not support it. In this case, please check how to enable it in your browser settings.</p>
+            <p>In any case, you will find the plan of the website on our <a href="../../index.html">home page</a>. This will allow you to navigate throughout the full list of pages of our website.</p>
+            <hr>
+        </noscript>
+
         <!-- Header of the website -->
         <header-component></header-component>
         
+        <!-- Introduction-->
+        <h1>Introduction</h1>
+        <div>
+            <p>Voici ci-après trois différentes propositions de voyages pour ceux qui vont venir de loin pour fêter le mariage avec nous!<br/>
+            Les trois propositions sont les suivantes:
+            <ol>
+                <li>De Paris à Versailles via la Normandie et les Châteaux de la Loire</li>
+                <li>La Rochelle, la Gironde et les Châteaux de la Loire</li>
+                <li>La Bretagne</li>
+            </ol>
+            </p>
+        </div>
+        <div id='introTripsImages'>
+            <img src="../../rsc/images/trip_1.png" class='introTripsImage' alt="Voyage Paris, Normandie, Loire, Versailles" />
+            <img src="../../rsc/images/trip_2.png" class='introTripsImage' alt="Voyage La Rochelle, la Gironde et la Loire" />
+            <img src="../../rsc/images/trip_3.png" class='introTripsImage' alt="La Bretagne" />
+        </div>
+        <div>
+            <p>La section qui suit présente chaque proposition un peu plus en détails. Vous trouverez une section par proposition, composée chacune :
+            <ul>
+                <li>d'un tableau récapitulatif avec, pour chacune des étapes proposées, un lien vers la localisation Google Maps, quelques indications de visites et des liens vers les sites utiles comme les offices de tourisme;</li>
+                <li>d'une image montrant le trajet proposé sur une carte de France ainsi qu'un zoom sur la région.</li>
+            </ul>
+            </p>
+            <p><em>NB : les images sont les mêmes que celles en introduction, elles sont donc par défaut en petite taille à côté des tableaux récapitulatifs mais vous pouvez les agrandir (ou ensuite les réduire) en cliquant dessus.</em></p>
+        </div>
+
+
+
         <!-- Première proposition-->
         <div><h1>I. De Paris à Versailles via la Normandie et les Châteaux de la Loire</h1></div>
         <section id="trip1">
             <aside>
-                <img src="../../rsc/images/trip_1.png" alt="Voyage Paris, Normandie, Loire, Versailles" />
+                <img src="../../rsc/images/trip_1.png" class="smallTripImage" alt="Voyage Paris, Normandie, Loire, Versailles" />
             </aside>
             <article>
                 <table>
@@ -249,7 +287,7 @@
         <div><h1>II. La Rochelle, la Gironde et les Châteaux de la Loire</h1></div>
         <section id="trip2">
             <aside>
-                <img src="../../rsc/images/trip_2.png" alt="Voyage La Rochelle, la Gironde et la Loire" />
+                <img src="../../rsc/images/trip_2.png" class="smallTripImage" alt="Voyage La Rochelle, la Gironde et la Loire" />
             </aside>
             <article>
                 <table>
@@ -420,7 +458,7 @@
         <div><h1>III. La Bretagne</h1></div>
         <section id="trip3">
             <aside>
-                <img src="../../rsc/images/trip_3.png" alt="La Bretagne" />
+                <img src="../../rsc/images/trip_3.png" class="smallTripImage" alt="La Bretagne" />
             </aside>
             <article>
                 <table>

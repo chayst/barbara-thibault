@@ -1,26 +1,5 @@
 // GENERAL
-/* // Navigation
-let navParents = document.getElementsByClassName('navParentOff');
-console.log(navParents)
-
-let displayNavChild = function() {
-    this.classList.replace("navParentOff", "navParentOn");
-    this.children[1].classList.replace("navChildOff", "navChildOn");
-}
-
-let undisplayNavChild = function() {
-    this.classList.replace("navParentOn", "navParentOff");
-    this.children[1].classList.replace("navChildOn", "navChildOff");
-}
-
-for (var i = 0; i < navParents.length; i++) {
-    navParents[i].addEventListener('mouseenter', displayNavChild);
-}
-
-for (var i = 0; i < navParents.length; i++) {
-    navParents[i].addEventListener('mouseleave', undisplayNavChild);
-} */
-
+// Defined in header currentNav = document.getElementsByTagName('meta')[0].getAttribute('name');
 
 // HOME PAGE
 // Jours Restants
@@ -31,6 +10,28 @@ const daysLeft = Math.floor(elapsedTime/(1000*3600*24));
 
 console.log(document.getElementById("daysLeft"))
 
-document
-.getElementById("daysLeft")
-.innerText = daysLeft;
+if (currentNav == 'home_br' || currentNav == 'index') {
+    document
+    .getElementById("daysLeft")
+    .innerText = daysLeft;
+}
+
+
+
+// ORGANISATION PAGE
+// Trips images
+if (currentNav.includes('trips')) {
+    let tripImages = document.getElementsByClassName('smallTripImage');
+
+    let changeTripImage = function() {
+       if (this.classList.contains("smallTripImage")) {
+            this.classList.replace("smallTripImage", "largeTripImage");
+        } else if (this.classList.contains("largeTripImage")) {
+            this.classList.replace("largeTripImage", "smallTripImage");
+        }
+    }
+
+    for (var i = 0; i < tripImages.length; i++) {
+        tripImages[i].addEventListener('click', changeTripImage);
+    }
+}

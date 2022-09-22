@@ -13,9 +13,9 @@ let homeTitle = 'Accueil';
 let historyTitle = 'Notre Histoire';
 let witnessesTitle = 'Nos Témoins';
 let organisationTitle = 'Organisation';
+let infoTitle = "Informations Pratiques";
 let programTitle = 'Programme';
 let tripsTitle = 'Voyages';
-let hotelsTitle = "Liste d'Hôtels";
 let presentsTitle = 'Liste de Cadeaux';
 let presenceTitle = 'Confirmez votre présence';
 
@@ -34,7 +34,8 @@ let redirectBR = '';
 // FR - Conditions of attributions when on french pages
 //particular case of index
 if (currentNav == 'index') {
-    navForward = navForwardOrg = 'fr/';
+    navForward = 'fr/';
+    navForwardOrg = 'fr/org/';
     homeStatus = "id='currentNav'";
     redirectFR = homeLink;
     redirectBR = "br/home_br.html";
@@ -43,6 +44,7 @@ if (currentNav == 'index') {
 //general rule
 if (currentNav.includes('_fr')) {
     navBack = '../';
+    navForwardOrg = 'org/';
     homeLink = '../' + homeLink;
     redirectFR = currentNav + '.html';
     redirectBR = '../br/' + currentNav.slice(0, -2) + 'br.html';
@@ -62,9 +64,11 @@ if (currentNav == 'history_fr') {
 }
 
 //submenus
-if (currentNav == 'program_fr' || currentNav == 'trips_fr' || currentNav == 'hotels_fr') {
+if (currentNav == 'info_fr' || currentNav == 'program_fr' || currentNav == 'trips_fr') {
     organisationStatus = "id='currentNav'";
     navBack = '../../';
+    navForward = '../';
+    navForwardOrg = '';
     homeLink = '../' + homeLink;
     redirectBR = '../../br/org/' + currentNav.slice(0, -2) + 'br.html';
 }
@@ -77,16 +81,17 @@ if (currentNav.includes('_br')) {
     //rename nav items
     homeTitle = 'Entrada';
     historyTitle = 'Nossa Historia';
-    witnessesTitle = 'Nossas Testemunias';
+    witnessesTitle = 'Nossas Testemunhas';
     organisationTitle = 'Organização';
+    infoTitle = 'Informações práticas';
     programTitle = 'Programma';
     tripsTitle = 'Viagems';
-    hotelsTitle = 'Lista de Hoteis';
     presentsTitle = 'Lista de Presentes';
     presenceTitle = 'Confirme sua Presencia';
 
     language = 'br';
     navBack = '../';
+    navForwardOrg = 'org/';
     homeLink = 'home_br.html';
     redirectBR = currentNav + '.html';
     redirectFR = '../fr/' + currentNav.slice(0, -2) + 'fr.html';
@@ -109,9 +114,11 @@ if (currentNav == 'home_br') {
 }
 
 // submenus
-if (currentNav == 'program_br' || currentNav == 'trips_br' || currentNav == 'hotels_br') {
+if (currentNav == 'info_br' || currentNav == 'program_br' || currentNav == 'trips_br') {
     organisationStatus = "id='currentNav'";
     navBack = '../../';
+    navForward = '../';
+    navForwardOrg = '';
     homeLink = '../home_br';
     redirectFR = '../../fr/org/' + currentNav.slice(0, -2) + 'fr.html';
 }
@@ -283,9 +290,9 @@ headerTemplate.innerHTML = `
                 <li><a ` + witnessesStatus + `href="` + navForward + `witnesses_` + language + `.html">` + witnessesTitle + `</a></li>
                 <li class="navParentOff"><a ` + organisationStatus + `href="` + navForward + `organisation_` + language + `.html">` + organisationTitle + `</a>
                     <ul class="navChildOff">
-                        <li><a href="` + navForwardOrg + `org/program_` + language + `.html">` + programTitle + `</a></li>
-                        <li><a href="` + navForwardOrg + `org/trips_` + language + `.html">` + tripsTitle + `</a></li>
-                        <li><a href="` + navForwardOrg + `org/hotels_` + language + `.html">` + hotelsTitle + `</a></li>
+                    <li><a href="` + navForwardOrg + `info_` + language + `.html">` + infoTitle + `</a></li>
+                    <li><a href="` + navForwardOrg + `program_` + language + `.html">` + programTitle + `</a></li>
+                        <li><a href="` + navForwardOrg + `trips_` + language + `.html">` + tripsTitle + `</a></li>
                     </ul>
                 </li>
                 <li><a ` + presentsStatus + `href="` + navForward + `presents_` + language + `.html">` + presentsTitle + `</a></li>
@@ -324,9 +331,16 @@ class Header extends HTMLElement {
         for (var i = 0; i < navParents.length; i++) {
             navParents[i].addEventListener('mouseenter', displayNavChild);
         }
+        for (var i = 0; i < navParents.length; i++) {
+            navParents[i].addEventListener('focusin', displayNavChild);
+        }
 
         for (var i = 0; i < navParents.length; i++) {
             navParents[i].addEventListener('mouseleave', undisplayNavChild);
+        }
+
+        for (var i = 0; i < navParents.length; i++) {
+            navParents[i].addEventListener('focusout', undisplayNavChild);
         }
     }
 }
