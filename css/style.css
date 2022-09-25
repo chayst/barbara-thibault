@@ -2,6 +2,8 @@
 {
     --dark: #5B3121;
     --light: #F8EDD9;
+    --vindark: #553A59;
+    --vinlight: #947795;
 }
 
 /* other palette: #553A59;#947795 */
@@ -31,7 +33,7 @@ noscript
 #noscriptNav > ul
 {
     border: 1px solid;
-    border-radius: 3%;
+    border-radius: 1rem;
     text-align: left;
     padding-right: 20px;
     padding-top: 5px;
@@ -87,13 +89,14 @@ body
 /* - General Links - */
 a
 {
-    text-decoration: none;
+    text-decoration: underline;
+    color: var(--vindark);
     font-size: 1rem;
 }
 
 a:hover
 {
-    color: var(--light);
+    color: var(--vinlight);
 }
 
 a:focus
@@ -103,6 +106,7 @@ a:focus
     border-radius: 3%;
 }
 
+/* - Titles - */
 h1
 {
     margin-top: 100px;
@@ -117,11 +121,23 @@ h2
     font-size: 1.7rem;
 }
 
+/* - Sections - */
+section
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/* - Text - */
 p
 {
     text-align: justify;
     font-size: 1rem;
     line-height: 1.2rem;
+    max-width: 1000px;
 }
 
 li
@@ -129,6 +145,7 @@ li
     text-align: justify;
     list-style-position: inside;
     font-size: 1rem;
+    max-width: 800px;
 }
 
 em
@@ -141,6 +158,61 @@ em
 
 
 /* --- SPECIFIC TO SINGLE PAGE --- */
+/* - home - */
+#homeBody
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#homeBody img
+{
+    max-width: 100%;
+    height: auto;
+}
+
+/* - history - */
+#historyBody p::first-letter
+{
+    font-size: 2.3rem;
+    line-height: 2.3rem;
+    position: relative;
+    float: left;
+    display: block;
+}
+
+#historyBody section article
+{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    padding-top: 40px;
+}
+
+#historyBody section article + article
+{
+    border-top: 1px solid var(--dark);
+}
+
+#historyBody section article > aside
+{
+    max-width: 100%;
+    height: auto;
+}
+
+.historyArticleText
+{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    max-width: 500px;
+    margin-left: 40px;
+}
+
+
 /* - witnesses - */
 #groomAndBride
 {
@@ -194,6 +266,99 @@ em
 }
 
 
+/* - organisation - */
+#organisationBody
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#navPage
+{
+    display: flex;
+    flex-direction: row;
+    max-width: 1000px;
+}
+
+.navPageItem
+{
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    margin: 10px 10px;
+    overflow: scroll;
+    border-radius: 1rem;
+    background-color: var(--dark);
+}
+
+.navPageTitle, .navPageContent
+{
+    text-align: center;
+    color: var(--light);
+}
+
+
+/* - info - */
+section > article p
+{
+    max-width: 1000px;
+}
+
+section li
+{
+    max-width: 900px;
+}
+
+section > article table
+{
+    max-width: 1000px;
+}
+section > article p > img
+{
+    align-self: center;
+}
+
+aside
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+}
+
+aside img
+{
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* - program - */
+.programItem
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.programItem p
+{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.programItem > p + p
+{
+    border-left: 1px solid;
+    max-width: 390px;
+}
+
+
+
+
 /* - trips - */
 .tripText
 {
@@ -220,7 +385,7 @@ em
 {
     display: block;
     border: 1px solid;
-    border-radius: 1%;
+    border-radius: 0.5rem;
     max-width: 33%;
     height: auto;
 }
@@ -269,9 +434,32 @@ td a::after
     padding-left: 3px;
 }
 
+/* - presents - */
+#presentsBody
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+/* - presence - */
+#presenceConfirmation
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-
+/* - comment - */
+#commentBody
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
