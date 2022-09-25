@@ -23,42 +23,67 @@
         <!-- Header of the website -->
         <header-component></header-component>
         
-        <p>XXX jours restants</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-        <p>Website coming soon</p>
-
+        <section id="presenceConfirmation">
+            <div>    
+                <p>
+                    Afin de confirmer votre présence, nous vous prions de bien vouloir répondre de l'une des manières suivantes
+                    <ul>
+                        <li>Par courrier à l'une des deux adresses indiquées en bas de la page ;<noscript> ou sur notre accueil dont vous trouverez le lien en haut de cette page, si vous n'avez pas javascript activé.</noscript></li>
+                        <li>Par email à <a href="mailto:contact@barbara-thibault.fr">contact@barbara-thibault.fr</a> - <em>nous vous enverrons alors une confirmation de bonne réception</em> ;</li>
+                        <li>Via le formulaire ci-dessous - <em>nous vous enverrons alors une confirmation de bonne réception</em>.</li>
+                    </ul>
+                </p>
+            </div>
+            <div>
+                <h1>Formulaire - Confirmation de Présence</h1>
+                <form method="post" action="../rsc/forms/presenceFormAction.php">
+                    <h3>Informations Personnelles</h3>
+                    <p>
+                        <label>Votre Prénom :</label>
+                        <input type="text" name="firstName" id="firstName" placeholder="Barbara" required />
+                        <label>Votre Nom :</label>
+                        <input type="text" name="lastName" id="lastName" placeholder="Chays" required />
+                    </p>
+                    <p>
+                        <label>Votre Email :</label>
+                        <input type="email" name="email" id="email" required />
+                        <label>Votre Numéro de Téléphone :</label>
+                        <input type="tel" name="email" id="email" />
+                    </p>
+                    <h3>Présence mariage</h3>
+                    <p>
+                        <label>Venez-vous au mariage?</label>
+                        <input type="radio" name="dDay" value="present" id="present"/><label>Oui</label>
+                        <input type="radio" name="dDay" value="absent" id="absent"/><label>Non</label>
+                    </p>
+                    <h3>Informations plus détaillés</h3>
+                    <p>
+                        <label>Qui de votre invitation viendra au cocktail?</label>
+                        <input type="text" name="cocktailPresent" id="cocktailPresent" placeholder="Anne, Arturo et les 2 enfants" />
+                        <label> - à la réception?</label>
+                        <input type="text" name="dinerPresent" id="dinerPresent" placeholder="Anne, Arturo et les 2 enfants" />
+                    </p>
+                    <p>
+                        <label>Devons-nous prévoir un repas végétarien pour au moins l'un de vos invités?</label><br/>
+                        <input type="radio" name="vegan" value="vegan" id="vegan"/><label>Oui</label>
+                        <label> - combien? </label><input type="number" name="vegan" id="vegan"/>
+                        <input type="radio" name="vegan" value="noVegan" id="noVegan"/><label>Non</label>
+                    </p>
+                    <p>
+                        <label>Comptez-vous être présent au lendemain?</label><br/>
+                        <input type="radio" name="otherDay" value="otherDayPresent" id="otherDayPresent"/><label>Oui</label>
+                        <input type="radio" name="otherDay" value="otherDayAbsent" id="otherDayAbsent"/><label>Non</label>
+                        <input type="radio" name="otherDay" value="otherDayNone" id="otherDayNone"/><label>Je ne sais pas</label>
+                    </p>
+                    <h3>Commentaires</h3>
+                    <p>
+                        <label>Commentaire :</label><br/>
+                        <textarea name="comment" id="comment" placeholder="J'ai une question concernant la liste des hôtels..." rows="4" cols="60"></textarea><br/>
+                    </p>
+                    <input type="submit" value="Valider" />
+                </form>
+            </div>
+        </section>
 
         <!-- Footer of the website -->
         <footer-component></footer-component>
