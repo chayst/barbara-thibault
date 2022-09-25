@@ -18,6 +18,7 @@ let programTitle = 'Programme';
 let tripsTitle = 'Voyages';
 let presentsTitle = 'Liste de Cadeaux';
 let presenceTitle = 'Confirmez votre présence';
+let commentTitle = 'Laissez nous un mot';
 
 
 let homeStatus = '';
@@ -26,6 +27,7 @@ let witnessesStatus = '';
 let organisationStatus = '';
 let presentsStatus = '';
 let presenceStatus = '';
+let commentStatus = '';
 
 let redirectFR = '';
 let redirectBR = '';
@@ -61,6 +63,8 @@ if (currentNav == 'history_fr') {
     presenceStatus = "id='currentNav'";
 } else if (currentNav == 'organisation_fr') {
     organisationStatus = "id='currentNav'";
+} else if (currentNav == 'comment_fr') {
+    commentStatus = "id='currentNav'";
 }
 
 //submenus
@@ -88,6 +92,7 @@ if (currentNav.includes('_br')) {
     tripsTitle = 'Viagems';
     presentsTitle = 'Lista de Presentes';
     presenceTitle = 'Confirme sua Presencia';
+    commentTitle = 'Deixa uma palavra';
 
     language = 'br';
     navBack = '../';
@@ -111,6 +116,8 @@ if (currentNav == 'home_br') {
     presenceStatus = "id='currentNav'";
 } else if (currentNav == 'organisation_br') {
     organisationStatus = "id='currentNav'";
+} else if (currentNav == 'comment_br') {
+    commentStatus = "id='currentNav'";
 }
 
 // submenus
@@ -298,6 +305,7 @@ headerTemplate.innerHTML = `
                 </li>
                 <li><a ` + presentsStatus + `href="` + navForward + `presents_` + language + `.html">` + presentsTitle + `</a></li>
                 <li><a ` + presenceStatus + `href="` + navForward + `presence_` + language + `.html">` + presenceTitle + `</a></li>
+                <li><a ` + commentStatus + `href="` + navForward + `comment_` + language + `.html">` + commentTitle + `</a></li>
             </ul>
                 
         </nav>
