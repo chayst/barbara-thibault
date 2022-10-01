@@ -2,21 +2,21 @@
 // already declared in header: let currentNav = document.getElementsByTagName('meta')[0].getAttribute('name');
 
 // initialization of language variables in French
-let contact = 'Contactez-nous';
-let music = 'Écoutez notre playlist';
+let contact = "Contactez-nous";
+let music = "Écoutez notre playlist";
 
 // BR - Conditions of attributions when on portuguese pages
 //general rule
-if (currentNav.includes('_br')) {
-    //rename footer items
-    contact = 'Contatto';
-    music = 'Escute a nossa playlist';
+if (currentNav.includes("_br")) {
+  //rename footer items
+  contact = "Contatto";
+  music = "Escute a nossa playlist";
 }
 
+const footerTemplate = document.createElement("template");
 
-const footerTemplate = document.createElement('template');
-
-footerTemplate.innerHTML = `
+footerTemplate.innerHTML =
+  `
     <style>
         footer
         {
@@ -61,25 +61,29 @@ footerTemplate.innerHTML = `
             <p>Francisco José Nunes Ferreira e Ana Niedja Mendes Nunes<br/>Ed Espaço Veredas II<br/>Avenida das Araucarias, Rua 12 Sul, Lote 10, AP 704<br/>71.939-000 - Aguas Claras, Brasilia DF, Brasil</p>
         </div>
         <div>
-            <a href="mailto:contact@barbara-thibault.fr"><p>` + contact + `</p>
+            <a href="mailto:contact@barbara-thibault.fr"><p>` +
+  contact +
+  `</p>
             <p>contact@barbara-thibault.fr</p></a>
         </div>
         <div>
-            <p>` + music + `</p>
+            <p>` +
+  music +
+  `</p>
             <p><iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5TYrt1ew8AH6baS2IgsR9E?utm_source=generator&theme=0" width="80%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></p>
         </div>
     </footer>
 `;
 
 class Footer extends HTMLElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    connectedCallback() {
-        const shadowRoot = this.attachShadow({ mode: 'closed' });
-        shadowRoot.appendChild(footerTemplate.content);
-    }
+  connectedCallback() {
+    const shadowRoot = this.attachShadow({ mode: "closed" });
+    shadowRoot.appendChild(footerTemplate.content);
+  }
 }
 
-customElements.define('footer-component', Footer);
+customElements.define("footer-component", Footer);
