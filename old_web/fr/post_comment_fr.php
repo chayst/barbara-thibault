@@ -13,16 +13,6 @@ if (isset($_POST['author'])) {
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <!-- En-tête de la page -->
-        <meta charset="utf-8" name="comment_fr" />
-        <link rel="stylesheet" href="../css/style.css" />
-        <title>Barbara et Thibault | Livre d'Or</title>
-        <script src="../rsc/htmlComponents/header.js" type="text/javascript" defer></script>
-        <script src="../rsc/htmlComponents/footer.js" type="text/javascript" defer></script>
-        <script src="../js/index.js" type="text/javascript" defer></script>
-    </head>
-
     <body>
         <!-- For those whose javascript is not enabled -->
         <noscript>
