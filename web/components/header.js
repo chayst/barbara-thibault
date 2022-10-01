@@ -309,7 +309,6 @@ headerTemplate.innerHTML = `
             </ul>
                 
         </nav>
-        <script src="js/index.js" type="text/javascript" defer></script>
     </header>
 `;
 
