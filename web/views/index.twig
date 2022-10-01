@@ -1,4 +1,5 @@
 {% extends "layout.html" %} {% block content %}
+<p>18:36</p>
 <h1><span id="daysLeft">daysLeft</span> jours restants</h1>
 <div id="homeBody">
   <img
@@ -7,6 +8,10 @@
   />
 </div>
 <script>
+  (function(val) {
+    console.log(val);
+  })('test');
+
   // Jours Restants
   const weddingDate = new Date(2023, 5, 20);
   const today = new Date();
