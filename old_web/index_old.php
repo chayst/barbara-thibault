@@ -17,7 +17,6 @@ setcookie(
 <!DOCTYPE html>
 <html>
     <body>
-        
         <?php
         if(!isset($_COOKIE['CONNECTED_ONCE']))
         {

@@ -1,12 +1,20 @@
-{% extends "layout.html" %} 
-
-{% block content %}
+{% extends "layout.html" %} {% block content %}
 <h1><span id="daysLeft">daysLeft</span> jours restants</h1>
-
 <div id="homeBody">
   <img
-    src="rsc/images/home/home.jpg"
+    src="../images/home/home.jpg"
     alt="Welcome picture on Thibault and Barbara wedding's site"
   />
 </div>
+<script type="text/javascript">
+  // Jours Restants
+  const weddingDate = new Date(2023, 5, 20);
+  const today = new Date();
+  const elapsedTime = weddingDate.getTime() - today.getTime();
+  const daysLeft = Math.floor(elapsedTime / (1000 * 3600 * 24));
+
+  if (currentNav == "home_br" || currentNav == "index") {
+    document.getElementById("daysLeft").innerText = daysLeft;
+  }
+</script>
 {% endblock %}
