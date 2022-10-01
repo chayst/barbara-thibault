@@ -1,5 +1,5 @@
 {% extends "layout.html" %} {% block content %}
-<p>18:36</p>
+<p>18:39</p>
 <h1><span id="daysLeft">daysLeft</span> jours restants</h1>
 <div id="homeBody">
   <img
@@ -15,9 +15,7 @@
     const elapsedTime = weddingDate.getTime() - today.getTime();
     const daysLeft = Math.floor(elapsedTime / (1000 * 3600 * 24));
 
-    if (currentNav == "home_br" || currentNav == "index") {
-      document.getElementById("daysLeft").innerText = daysLeft;
-    }
+    document.getElementById("daysLeft").innerText = daysLeft;
     return daysLeft
   }
 
