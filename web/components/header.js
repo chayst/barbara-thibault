@@ -321,7 +321,7 @@ class Header extends HTMLElement {
     }
 
     connectedCallback() {
-        const shadowRoot = this.attachShadow({ mode: 'open' });
+        const shadowRoot = this.attachShadow({ mode: 'close' });
         shadowRoot.appendChild(headerTemplate.content);
         
         // Navigation hover logic

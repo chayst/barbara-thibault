@@ -81,7 +81,7 @@ class Footer extends HTMLElement {
   }
 
   connectedCallback() {
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    const shadowRoot = this.attachShadow({ mode: "close" });
     shadowRoot.appendChild(footerTemplate.content);
   }
 }
