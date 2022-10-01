@@ -1,5 +1,5 @@
-{% extends "layout.html" %} {% block content %}
-<p>18:39</p>
+{% extends "layout.html" %} 
+{% block content %}
 <h1><span id="daysLeft">daysLeft</span> jours restants</h1>
 <div id="homeBody">
   <img
@@ -19,6 +19,6 @@
     return daysLeft
   }
 
-  console.log(updateCountDown());
+  updateCountDown();
 </script>
 {% endblock %}
