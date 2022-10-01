@@ -8,18 +8,19 @@
   />
 </div>
 <script>
-  (function(val) {
-    console.log(val);
-  })('test');
+  const updateCountDown = function() {
+    // Jours Restants
+    const weddingDate = new Date(2023, 5, 20);
+    const today = new Date();
+    const elapsedTime = weddingDate.getTime() - today.getTime();
+    const daysLeft = Math.floor(elapsedTime / (1000 * 3600 * 24));
 
-  // Jours Restants
-  const weddingDate = new Date(2023, 5, 20);
-  const today = new Date();
-  const elapsedTime = weddingDate.getTime() - today.getTime();
-  const daysLeft = Math.floor(elapsedTime / (1000 * 3600 * 24));
-
-  if (currentNav == "home_br" || currentNav == "index") {
-    document.getElementById("daysLeft").innerText = daysLeft;
+    if (currentNav == "home_br" || currentNav == "index") {
+      document.getElementById("daysLeft").innerText = daysLeft;
+    }
+    return daysLeft
   }
+
+  console.log(updateCountDown());
 </script>
 {% endblock %}
