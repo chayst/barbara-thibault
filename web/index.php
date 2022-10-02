@@ -30,11 +30,23 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
   'twig.path' => __DIR__ . '/views',
 ));
 
-// Our web handlers
+
+
+// WEB HANDLERS
+// Home page
 $app->get('/', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('index.twig');
 });
+
+// FR website
+$app->get('/fr/history', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('index.twig');
+});
+
+
+// Access to DB
 $app->get('/db/', function() use($app) {
   $st = $app['pdo']->prepare('SELECT name FROM test_table');
   $st->execute();
