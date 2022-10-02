@@ -42,7 +42,7 @@ $app->get('/', function () use ($app) {
 // FR website
 $app->get('/fr/history', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
+  return $app['twig']->render('history.twig');
 });
 
 
