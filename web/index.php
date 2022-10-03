@@ -50,6 +50,12 @@ $app->get('/history', function () use ($app) {
   return $app['twig']->render('history.twig');
 });
 
+$app->get('/witnesses', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('witnesses.twig');
+});
+
+
 $app->get('/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('organisation.twig');
@@ -60,9 +66,14 @@ $app->get('/org/info', function () use ($app) {
   return $app['twig']->render('info.twig');
 });
 
-$app->get('/witnesses', function () use ($app) {
+$app->get('/org/program', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('witnesses.twig');
+  return $app['twig']->render('program.twig');
+});
+
+$app->get('/org/trips', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('trips.twig');
 });
 
 $app->get('/presents', function () use ($app) {
@@ -70,40 +81,72 @@ $app->get('/presents', function () use ($app) {
   return $app['twig']->render('presents.twig');
 });
 
+$app->get('/presence', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('presence.twig');
+});
+
+$app->get('/comment', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('comment.twig');
+});
+
+
+
 // BR website
 $app->get('/br/home', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
+  return $app['twig']->render('br/index.twig');
 });
 
 $app->get('/br/history', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('history.twig');
-});
-
-$app->get('/br/organisation', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('organisation.twig');
-});
-
-$app->get('/br/org/info', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('info.twig');
+  return $app['twig']->render('br/history.twig');
 });
 
 $app->get('/br/witnesses', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('witnesses.twig');
+  return $app['twig']->render('br/witnesses.twig');
+});
+
+$app->get('/br/organisation', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/organisation.twig');
+});
+
+$app->get('/br/org/info', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/info.twig');
+});
+
+$app->get('/br/org/program', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/program.twig');
+});
+
+$app->get('/br/org/trips', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/trips.twig');
 });
 
 $app->get('/br/presents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('presents.twig');
+  return $app['twig']->render('br/presents.twig');
+});
+
+$app->get('/br/presence', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/presence.twig');
+});
+
+$app->get('/br/comment', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/comment.twig');
 });
 
 
 
-// Access to DB
+// ACCESS TO DB
 $app->get('/db/', function() use($app) {
   $st = $app['pdo']->prepare('SELECT name FROM test_table');
   $st->execute();
@@ -119,4 +162,25 @@ $app->get('/db/', function() use($app) {
   ));
 });
 
+
+
+// ACCESS TO COMMENT
+$app->get('/com/', function() use($app) {
+  $commentsStatement = $app['pdo']->prepare('SELECT *, DATE_FORMAT(comments.date, "%d/%m/%Y") AS comment_date FROM comments LIMIT 50');
+  $commentsStatement->execute();
+
+  $comments = array();
+  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $commentsStatement['id']);
+    $comments[] = $commentsStatement;
+  }
+
+  return $app['twig']->render('comment.twig', array(
+    'comments' => $comments
+  ));
+});
+
+
+
+// RUN THE WEBSITE
 $app->run();

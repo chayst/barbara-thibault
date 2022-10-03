@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="commentBody">
+    <div id="commentForm">    
+        <h1>Laissez-nous un mot</h1>
+        <form method="post" action="post_comment_fr.php">
+            <label>Commentaire :</label><br/>
+            <textarea name="content" id="comment" placeholder="Votre message pour les mariés" rows="4" cols="60" required></textarea>
+            <input type="text" name="author" placeholder="Votre nom" required />
+            <input type="submit" value="Envoyer" />
+        </form>
+        <p><em>Une fois envoyé, votre commentaire sera ajouté à la liste que vous pouvez trouver ci-dessous</em>></p>
+    </div>
+    <div>
+        <h1>Ce dont vous nous avez fait part</h1>
+        <ul>
+        {% for c in comments %}
+          <li> {{ c.content }} - {{ c.author }} - {{ c.comment_date }} - {{ c.likes }} </li>
+        {% else %}
+          <li>Personne n'a encore laissé de commentaire!</li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
