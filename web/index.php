@@ -104,6 +104,7 @@ $app->post('/likeComment', function () use ($app) {
     'id' => $commentId,
   ]);
   header('Location: /comment');
+  return $app['twig']->render('comment.twig');
 });
 
 
