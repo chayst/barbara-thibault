@@ -50,6 +50,11 @@ $app->get('/fr/organisation', function () use ($app) {
   return $app['twig']->render('organisation.twig');
 });
 
+$app->get('/fr/witnesses', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('witnesses.twig');
+});
+
 
 // Access to DB
 $app->get('/db/', function() use($app) {
