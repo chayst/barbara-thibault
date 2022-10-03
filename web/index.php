@@ -45,6 +45,11 @@ $app->get('/fr/history', function () use ($app) {
   return $app['twig']->render('history.twig');
 });
 
+$app->get('/fr/organisation', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('organisation.twig');
+});
+
 
 // Access to DB
 $app->get('/db/', function() use($app) {
