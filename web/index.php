@@ -39,7 +39,9 @@ $app->get('/', function () use ($app) {
   return $app['twig']->render('index.twig');
 });
 
-// FR website
+
+
+// FR WEBSITE
 $app->get('/home', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('index.twig');
@@ -55,7 +57,17 @@ $app->get('/witnesses', function () use ($app) {
   return $app['twig']->render('witnesses.twig');
 });
 
+$app->get('/presents', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('presents.twig');
+});
 
+$app->get('/presence', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('presence.twig');
+});
+
+//org
 $app->get('/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('organisation.twig');
@@ -76,21 +88,23 @@ $app->get('/org/trips', function () use ($app) {
   return $app['twig']->render('trips.twig');
 });
 
-$app->get('/presents', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('presents.twig');
-});
-
-$app->get('/presence', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('presence.twig');
-});
-
+//comment
 $app->get('/comment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('comment.twig');
 });
 
+$app->get('/likeComment', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  $commentId = $_POST['id'];
+  $commentLikes = $_POST['likes'];
+  $updateLikes = $app['pdo']->prepare('UPDATE comments SET likes = :likes WHERE id = :id');
+  $updateLikes->execute([
+    'likes' => $commentLikes + 1,
+    'id' => $commentId,
+  ]);
+  header('Location: /comment');
+});
 
 
 // BR website

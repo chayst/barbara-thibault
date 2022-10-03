@@ -14,13 +14,21 @@
     </div>
     <div>
         <h1>Ce dont vous nous avez fait part</h1>
-        <ul>
+        <section id="comments">
         {% for c in comments %}
-          <li> {{ c.content }} - {{ c.author }} - {{ c.comment_date }} - {{ c.likes }} </li>
+          <div class="singleComment">
+            <p><span class="commentAuthor">{{ c.author }}</span> <span class="commentDate">{{ c.comment_date }}</span></p>
+            <p><span class="commentContent">{{ c.content }}</span></ps>
+            <p>
+              <form method="post" action="/likeComment">
+                <input type="hidden" name="id" value="{{ c.id }}" />
+                <input type="submit" name="like" value="{{ c.likes }}" />
+              </form>
+            </p>
         {% else %}
-          <li>Personne n'a encore laissé de commentaire!</li>
+          <p>Personne n'a encore laissé de commentaire...</p>
         {% endfor %}
-        </ul>
+        </section>
     </div>
 </div>
 
