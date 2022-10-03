@@ -94,7 +94,7 @@ $app->get('/comment', function () use ($app) {
   return $app['twig']->render('comment.twig');
 });
 
-$app->get('/likeComment', function () use ($app) {
+$app->post('/likeComment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   $commentId = $_POST['id'];
   $commentLikes = $_POST['likes'];
