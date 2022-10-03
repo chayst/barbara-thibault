@@ -2,12 +2,8 @@
 let currentNav = document.getElementsByTagName('meta')[0].getAttribute('name');
 console.log(currentNav)
 
-let navForward = '';
-let navForwardOrg = '';
-
-let language = 'fr';
-
-let homeLink = '/';
+let root = 'barbara-thibault.herokuapp.com/';
+let languageNav = '';
 
 let homeTitle = 'Accueil';
 let historyTitle = 'Notre Histoire';
@@ -34,45 +30,27 @@ let redirectBR = '';
 
 
 // FR - Conditions of attributions when on french pages
-//particular case of index
-if (currentNav == 'index') {
-    navForward = 'fr/';
-    navForwardOrg = 'fr/org/';
-    homeStatus = "id='currentNav'";
-    redirectFR = homeLink;
-    redirectBR = "/br/";
-}
-
 //general rule
 if (currentNav.includes('_fr')) {
-    navForwardOrg = 'org/';
-    homeLink = '../' + homeLink;
-    redirectFR = currentNav.slice(0, -3);
-    redirectBR = '../br/' + currentNav.slice(0, -3);
+    redirectFR = root + currentNav.slice(0, -3);
+    redirectBR = root + 'br/' + currentNav.slice(0, -3);
 }
 
 //menus
-if (currentNav == 'history_fr') {
+if (currentNav.includes('home')) {
+    homeStatus = "id='currentNav'";
+} else if (currentNav.includes('history')) {
     historyStatus = "id='currentNav'";
-} else if (currentNav == 'witnesses_fr') {
+} else if (currentNav.includes('witnesses')) {
     witnessesStatus = "id='currentNav'";
-} else if (currentNav == 'presents_fr') {
+} else if (currentNav.includes('presents')) {
     presentsStatus = "id='currentNav'";
-} else if (currentNav == 'presence_fr') {
+} else if (currentNav.includes('presence')) {
     presenceStatus = "id='currentNav'";
-} else if (currentNav == 'organisation_fr') {
+} else if (currentNav.includes('organisation') || currentNav.includes('org/')) {
     organisationStatus = "id='currentNav'";
-} else if (currentNav == 'comment_fr') {
+} else if (currentNav.includes('comment')) {
     commentStatus = "id='currentNav'";
-}
-
-//submenus
-if (currentNav == 'info_fr' || currentNav == 'program_fr' || currentNav == 'trips_fr') {
-    organisationStatus = "id='currentNav'";
-    navForward = '../';
-    navForwardOrg = '';
-    homeLink = '../' + homeLink;
-    redirectBR = '../../br/org/' + currentNav.slice(0, -2) + 'br.html';
 }
 
 
@@ -92,40 +70,9 @@ if (currentNav.includes('_br')) {
     presenceTitle = 'Confirme sua Presencia';
     commentTitle = 'Deixa uma palavra';
 
-    language = 'br';
-    navForwardOrg = 'org/';
-    homeLink = 'home_br.html';
-    redirectBR = currentNav + '.html';
-    redirectFR = '../fr/' + currentNav.slice(0, -2) + 'fr.html';
+    redirectBR = root + currentNav.slice(0, -3);
+    redirectFR = root + '../' + currentNav.slice(0, -3);
 }
-
-//menus
-if (currentNav == 'home_br') {
-    homeStatus = "id='currentNav'";
-    redirectFR = '../index.html';
-} else if (currentNav == 'history_br') {
-    historyStatus = "id='currentNav'";
-} else if (currentNav == 'witnesses_br') {
-    witnessesStatus = "id='currentNav'";
-} else if (currentNav == 'presents_br') {
-    presentsStatus = "id='currentNav'";
-} else if (currentNav == 'presence_br') {
-    presenceStatus = "id='currentNav'";
-} else if (currentNav == 'organisation_br') {
-    organisationStatus = "id='currentNav'";
-} else if (currentNav == 'comment_br') {
-    commentStatus = "id='currentNav'";
-}
-
-// submenus
-if (currentNav == 'info_br' || currentNav == 'program_br' || currentNav == 'trips_br') {
-    organisationStatus = "id='currentNav'";
-    navForward = '../';
-    navForwardOrg = '';
-    homeLink = '../home_br.html';
-    redirectFR = '../../fr/org/' + currentNav.slice(0, -2) + 'fr.html';
-}
-
 
 
 
@@ -282,26 +229,26 @@ headerTemplate.innerHTML = `
         <div id="topHeader">
             <!-- first div is here to center easily but exactly the second div with flex -->
             <div style="visibility:hidden;">FR | BR</div>
-            <div><a href="` + homeLink + `"><img src="../images/logo_names_heart.png" alt="Noms Barbara et Thibault" /></a></div>
+            <div><a href="` + root + languageNav + `home"><img src="../images/logo_names_heart.png" alt="Noms Barbara et Thibault" /></a></div>
             <div id="languageMenu"><a href="` + redirectFR + `"><img src="../icons/france.png" alt="Logo France" /></a><span style="visibility:hidden;">-</span><span>|</span><span style="visibility:hidden;">-</span><a href="` + redirectBR + `"><img src="../icons/brazil.png" alt="Logo Brésil" /></a></div>
         </div>
 
         <!-- Navigation menu of the website -->
         <nav>
             <ul>
-                <li><a ` + homeStatus + `href="` + homeLink + `">` + homeTitle + `</a></li>
-                <li><a ` + historyStatus + `href="` + navForward + language + `history">` + historyTitle + `</a></li>
-                <li><a ` + witnessesStatus + `href="` + navForward + `witnesses_` + language + `.html">` + witnessesTitle + `</a></li>
-                <li class="navParentOff"><a ` + organisationStatus + `href="` + navForward + `organisation_` + language + `.html">` + organisationTitle + `</a>
+                <li><a ` + homeStatus + `href="` + root + languageNav + `home">` + homeTitle + `</a></li>
+                <li><a ` + historyStatus + `href="` + root + languageNav + `history">` + historyTitle + `</a></li>
+                <li><a ` + witnessesStatus + `href="` + root + languageNav + `witnesses">` + witnessesTitle + `</a></li>
+                <li class="navParentOff"><a ` + organisationStatus + `href="` + root + languageNav + `organisation">` + organisationTitle + `</a>
                     <ul class="navChildOff">
-                    <li><a href="` + navForwardOrg + `info_` + language + `.html">` + infoTitle + `</a></li>
-                    <li><a href="` + navForwardOrg + `program_` + language + `.html">` + programTitle + `</a></li>
-                        <li><a href="` + navForwardOrg + `trips_` + language + `.html">` + tripsTitle + `</a></li>
+                    <li><a href="` + root + languageNav + `org/info">` + infoTitle + `</a></li>
+                    <li><a href="` + root + languageNav + `org/program">` + programTitle + `</a></li>
+                        <li><a href="` + root + languageNav + `org/trips">` + tripsTitle + `</a></li>
                     </ul>
                 </li>
-                <li><a ` + presentsStatus + `href="` + navForward + `presents_` + language + `.html">` + presentsTitle + `</a></li>
-                <li><a ` + presenceStatus + `href="` + navForward + `presence_` + language + `.html">` + presenceTitle + `</a></li>
-                <li><a ` + commentStatus + `href="` + navForward + `comment_` + language + `.html">` + commentTitle + `</a></li>
+                <li><a ` + presentsStatus + `href="` + root + languageNav + `presents">` + presentsTitle + `</a></li>
+                <li><a ` + presenceStatus + `href="` + root + languageNav + `presence">` + presenceTitle + `</a></li>
+                <li><a ` + commentStatus + `href="` + root + languageNav + `comment">` + commentTitle + `</a></li>
             </ul>
                 
         </nav>

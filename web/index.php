@@ -40,20 +40,47 @@ $app->get('/', function () use ($app) {
 });
 
 // FR website
-$app->get('/fr/history', function () use ($app) {
+$app->get('/home', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('index.twig');
+});
+
+$app->get('/history', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('history.twig');
 });
 
-$app->get('/fr/organisation', function () use ($app) {
+$app->get('/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('organisation.twig');
 });
 
-$app->get('/fr/witnesses', function () use ($app) {
+$app->get('/witnesses', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('witnesses.twig');
 });
+
+// BR website
+$app->get('/br/home', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('index.twig');
+});
+
+$app->get('/br/history', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('history.twig');
+});
+
+$app->get('/br/organisation', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('organisation.twig');
+});
+
+$app->get('/br/witnesses', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('witnesses.twig');
+});
+
 
 
 // Access to DB
