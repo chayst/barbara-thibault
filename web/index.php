@@ -95,10 +95,10 @@ $app->post('/likeComment', function () use ($app) {
   $commentLikes = $_POST['likes'];
   $updateLikes = $app['pdo']->prepare('UPDATE comments SET likes = :likes WHERE id = :id');
   $updateLikes->execute([
-    'likes' => $commentLikes + 1,
+    'likes' => intval($commentLikes) + 1,
     'id' => $commentId,
   ]);
-  header('Location: /comment');
+  // header('Location: /comment');
   $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments LIMIT 50');
   $commentsStatement->execute();
 
