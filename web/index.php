@@ -89,11 +89,6 @@ $app->get('/org/trips', function () use ($app) {
 });
 
 //comment
-$app->get('/comment', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('comments.twig');
-});
-
 $app->post('/likeComment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   $commentId = $_POST['id'];
@@ -104,6 +99,18 @@ $app->post('/likeComment', function () use ($app) {
     'id' => $commentId,
   ]);
   header('Location: /comment');
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments LIMIT 50');
+  $commentsStatement->execute();
+
+  $comments = array();
+  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row['id']);
+    $comments[] = $row;
+  }
+
+  return $app['twig']->render('comments.twig', array(
+    'comments' => $comments
+  ));
   return $app['twig']->render('comments.twig');
 });
 
@@ -180,7 +187,7 @@ $app->get('/br/comment', function () use ($app) {
 
 
 // ACCESS TO COMMENT
-$app->get('/com/', function() use($app) {
+$app->get('/comment', function() use($app) {
   $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments LIMIT 50');
   $commentsStatement->execute();
 
