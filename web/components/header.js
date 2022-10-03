@@ -1,5 +1,6 @@
 // Variable declaration for the header template
 let currentNav = document.getElementsByTagName('meta')[0].getAttribute('name');
+console.log(currentNav)
 
 let navForward = '';
 let navForwardOrg = '';
