@@ -424,11 +424,19 @@ td a::after {
 .singleComment {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
     width: 500px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-.singleComment:nth-child(3) {
+.singleComment>p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.singleComment>form {
     align-self: flex-end;
 }
 
@@ -438,13 +446,17 @@ td a::after {
 
 .commentDate {
     font-weight: lighter;
+    font-size: smaller;
 }
 
 .commentLike {
-    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     content: var(--dark);
-    border: var(--dark);
+    border: solid 0.5px var(--dark);
     border-radius: 1rem;
+    background: transparent;
 }
 
 

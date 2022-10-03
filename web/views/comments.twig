@@ -19,12 +19,10 @@
           <div class="singleComment">
             <p><span class="commentAuthor">{{ c.author }}</span> <span class="commentDate">{{ c.comment_date }}</span></p>
             <p><span class="commentContent">{{ c.content }}</span></ps>
-            <p>
-              <form method="post" action="/likeComment">
-                <input type="hidden" name="id" value="{{ c.id }}" />
-                <button type="submit" name="like" title="{{ c.likes }}"><img src="../icons/like.png" alt="likeIcon" /></button>
-              </form>
-            </p>
+            <form method="post" action="/likeComment">
+              <input type="hidden" name="id" value="{{ c.id }}" />
+              <button type="submit" class="commentLike" name="like" ><img src="../icons/like.png" alt="likeIcon" />{{ c.likes }}</button>
+            </form>
         {% else %}
           <p>Personne n'a encore laissé de commentaire...</p>
         {% endfor %}
