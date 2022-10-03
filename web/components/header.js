@@ -2,7 +2,7 @@
 let currentNav = document.getElementsByTagName('meta')[0].getAttribute('name');
 console.log(currentNav)
 
-let root = 'barbara-thibault.herokuapp.com/';
+let root = '/';
 let languageNav = '';
 
 let homeTitle = 'Accueil';
