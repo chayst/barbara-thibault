@@ -176,12 +176,7 @@ $app->get('/com/', function() use($app) {
   //   $comments[] = $commentsStatement;
   // }
 
-  return $app['twig']->render('comments.twig', array(
-    'content' => $comments['content'],
-    'author' => $comments['author'],
-    'likes' => $comments['likes'],
-    'date' => $comments['comment_date']
-  ));
+  return $app['twig']->render('comments.twig', $comments);
 });
 
 
