@@ -55,6 +55,11 @@ $app->get('/organisation', function () use ($app) {
   return $app['twig']->render('organisation.twig');
 });
 
+$app->get('/org/info', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('info.twig');
+});
+
 $app->get('/witnesses', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('witnesses.twig');
@@ -79,6 +84,11 @@ $app->get('/br/history', function () use ($app) {
 $app->get('/br/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('organisation.twig');
+});
+
+$app->get('/br/org/info', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('info.twig');
 });
 
 $app->get('/br/witnesses', function () use ($app) {
