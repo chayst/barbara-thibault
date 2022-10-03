@@ -168,16 +168,15 @@ $app->get('/br/comment', function () use ($app) {
 $app->get('/com/', function() use($app) {
   $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments LIMIT 50');
   $commentsStatement->execute();
+  $comments->fetchAll();
 
-  $comments = array();
-  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
-    $app['monolog']->addDebug('Row ' . $row['id']);
-    $comments[] = $row;
-  }
+  // $comments = array();
+  // while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
+  //   $app['monolog']->addDebug('Row ' . $row['id']);
+  //   $comments[] = $row;
+  // }
 
-  return $app['twig']->render('comments.twig', array(
-    'content' => $comments['content']
-  ));
+  return $app['twig']->render('comments.twig', $comments);
 });
 
 
