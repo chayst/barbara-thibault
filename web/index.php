@@ -166,7 +166,7 @@ $app->get('/db/', function() use($app) {
 
 // ACCESS TO COMMENT
 $app->get('/com/', function() use($app) {
-  $commentsStatement = $app['pdo']->prepare('SELECT *, DATE_FORMAT(comments.date, "%d/%m/%Y") AS comment_date FROM comments LIMIT 50');
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, 'DD Mon') AS comment_date FROM comments LIMIT 50');
   $commentsStatement->execute();
 
   $comments = array();
