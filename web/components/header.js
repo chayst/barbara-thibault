@@ -3,11 +3,10 @@ let currentNav = document.getElementsByTagName('meta')[0].getAttribute('name');
 
 let navForward = '';
 let navForwardOrg = '';
-let navBack = '';
 
 let language = 'fr';
 
-let homeLink = 'index.html';
+let homeLink = '/';
 
 let homeTitle = 'Accueil';
 let historyTitle = 'Notre Histoire';
@@ -40,16 +39,15 @@ if (currentNav == 'index') {
     navForwardOrg = 'fr/org/';
     homeStatus = "id='currentNav'";
     redirectFR = homeLink;
-    redirectBR = "br/home_br.html";
+    redirectBR = "/br/";
 }
 
 //general rule
 if (currentNav.includes('_fr')) {
-    navBack = '../';
     navForwardOrg = 'org/';
     homeLink = '../' + homeLink;
-    redirectFR = currentNav + '.html';
-    redirectBR = '../br/' + currentNav.slice(0, -2) + 'br.html';
+    redirectFR = currentNav.slice(0, -3);
+    redirectBR = '../br/' + currentNav.slice(0, -3);
 }
 
 //menus
@@ -70,7 +68,6 @@ if (currentNav == 'history_fr') {
 //submenus
 if (currentNav == 'info_fr' || currentNav == 'program_fr' || currentNav == 'trips_fr') {
     organisationStatus = "id='currentNav'";
-    navBack = '../../';
     navForward = '../';
     navForwardOrg = '';
     homeLink = '../' + homeLink;
@@ -95,7 +92,6 @@ if (currentNav.includes('_br')) {
     commentTitle = 'Deixa uma palavra';
 
     language = 'br';
-    navBack = '../';
     navForwardOrg = 'org/';
     homeLink = 'home_br.html';
     redirectBR = currentNav + '.html';
@@ -123,7 +119,6 @@ if (currentNav == 'home_br') {
 // submenus
 if (currentNav == 'info_br' || currentNav == 'program_br' || currentNav == 'trips_br') {
     organisationStatus = "id='currentNav'";
-    navBack = '../../';
     navForward = '../';
     navForwardOrg = '';
     homeLink = '../home_br.html';
@@ -286,15 +281,15 @@ headerTemplate.innerHTML = `
         <div id="topHeader">
             <!-- first div is here to center easily but exactly the second div with flex -->
             <div style="visibility:hidden;">FR | BR</div>
-            <div><a href="` + homeLink + `"><img src="` + navBack + `../images/logo_names_heart.png" alt="Noms Barbara et Thibault" /></a></div>
-            <div id="languageMenu"><a href="` + redirectFR + `"><img src="` + navBack + `../icons/france.png" alt="Logo France" /></a><span style="visibility:hidden;">-</span><span>|</span><span style="visibility:hidden;">-</span><a href="` + redirectBR + `"><img src="` + navBack + `../icons/brazil.png" alt="Logo Brésil" /></a></div>
+            <div><a href="` + homeLink + `"><img src="../images/logo_names_heart.png" alt="Noms Barbara et Thibault" /></a></div>
+            <div id="languageMenu"><a href="` + redirectFR + `"><img src="../icons/france.png" alt="Logo France" /></a><span style="visibility:hidden;">-</span><span>|</span><span style="visibility:hidden;">-</span><a href="` + redirectBR + `"><img src="../icons/brazil.png" alt="Logo Brésil" /></a></div>
         </div>
 
         <!-- Navigation menu of the website -->
         <nav>
             <ul>
                 <li><a ` + homeStatus + `href="` + homeLink + `">` + homeTitle + `</a></li>
-                <li><a ` + historyStatus + `href="` + navForward + `history_` + language + `.html">` + historyTitle + `</a></li>
+                <li><a ` + historyStatus + `href="` + navForward + language + `history">` + historyTitle + `</a></li>
                 <li><a ` + witnessesStatus + `href="` + navForward + `witnesses_` + language + `.html">` + witnessesTitle + `</a></li>
                 <li class="navParentOff"><a ` + organisationStatus + `href="` + navForward + `organisation_` + language + `.html">` + organisationTitle + `</a>
                     <ul class="navChildOff">
@@ -322,7 +317,7 @@ class Header extends HTMLElement {
     connectedCallback() {
         const shadowRoot = this.attachShadow({ mode: 'open' });
         shadowRoot.appendChild(headerTemplate.content);
-        
+
         // Navigation hover logic
         let navParents = this.shadowRoot.querySelectorAll('.navParentOff');
 
