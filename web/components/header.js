@@ -1,10 +1,12 @@
 // Variable declaration for the header template
 let currentNav = document.getElementsByTagName('meta')[0].getAttribute('name');
-console.log(currentNav)
 
 let root = '/';
 let languageNav = '';
+let redirectFR = '';
+let redirectBR = '';
 
+//name titles to default french
 let homeTitle = 'Accueil';
 let historyTitle = 'Notre Histoire';
 let witnessesTitle = 'Nos Témoins';
@@ -17,6 +19,10 @@ let presenceTitle = 'Confirmez votre présence';
 let commentTitle = 'Laissez nous un mot';
 
 
+
+
+//MENU MANAGEMENT
+//initialize values
 let homeStatus = '';
 let historyStatus = '';
 let witnessesStatus = '';
@@ -24,19 +30,7 @@ let organisationStatus = '';
 let presentsStatus = '';
 let presenceStatus = '';
 let commentStatus = '';
-
-let redirectFR = '';
-let redirectBR = '';
-
-
-// FR - Conditions of attributions when on french pages
-//general rule
-if (currentNav.includes('_fr')) {
-    redirectFR = root + currentNav.slice(0, -3);
-    redirectBR = root + 'br/' + currentNav.slice(0, -3);
-}
-
-//menus
+//decision of which menu is on focus
 if (currentNav.includes('home')) {
     homeStatus = "id='currentNav'";
 } else if (currentNav.includes('history')) {
@@ -55,8 +49,14 @@ if (currentNav.includes('home')) {
 
 
 
-// BR - Conditions of attributions when on portuguese pages
-//general rule
+
+// IF ON FRENCH WEBSITE - Conditions of attributions when on french pages
+if (currentNav.includes('_fr')) {
+    redirectFR = root + currentNav.slice(0, -3);
+    redirectBR = root + 'br/' + currentNav.slice(0, -3);
+}
+
+// IF ON BRAZILIAN WEBSITE - Conditions of attributions when on portuguese pages
 if (currentNav.includes('_br')) {
     //rename nav items
     homeTitle = 'Entrada';
@@ -70,9 +70,16 @@ if (currentNav.includes('_br')) {
     presenceTitle = 'Confirme sua Presencia';
     commentTitle = 'Deixa uma palavra';
 
+    //have the right redirections
     redirectBR = root + currentNav.slice(0, -3);
     redirectFR = root + '../' + currentNav.slice(0, -3);
+
+    //add language localisation to stay on br pages
+    languageNav = 'br/';
 }
+
+
+
 
 
 
