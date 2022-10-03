@@ -147,36 +147,37 @@ $app->get('/br/comment', function () use ($app) {
 
 
 // ACCESS TO DB
-$app->get('/db/', function() use($app) {
-  $st = $app['pdo']->prepare('SELECT name FROM test_table');
-  $st->execute();
+// $app->get('/db/', function() use($app) {
+//   $st = $app['pdo']->prepare('SELECT name FROM test_table');
+//   $st->execute();
 
-  $names = array();
-  while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-    $app['monolog']->addDebug('Row ' . $row['name']);
-    $names[] = $row;
-  }
+//   $names = array();
+//   while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+//     $app['monolog']->addDebug('Row ' . $row['name']);
+//     $names[] = $row;
+//   }
 
-  return $app['twig']->render('database.twig', array(
-    'names' => $names
-  ));
-});
+//   return $app['twig']->render('database.twig', array(
+//     'names' => $names
+//   ));
+// });
 
 
 
 // ACCESS TO COMMENT
 $app->get('/com/', function() use($app) {
-  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, 'DD Mon') AS comment_date FROM comments LIMIT 50');
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments LIMIT 50');
   $commentsStatement->execute();
-  $comments->fetchAll();
 
-  // $comments = array();
-  // while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
-  //   $app['monolog']->addDebug('Row ' . $commentsStatement['id']);
-  //   $comments[] = $commentsStatement;
-  // }
+  $comments = array();
+  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row['id']);
+    $comments[] = $row;
+  }
 
-  return $app['twig']->render('comments.twig', $comments);
+  return $app['twig']->render('comments.twig', array(
+    'content' => $comments['content']
+  ));
 });
 
 
