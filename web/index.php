@@ -176,7 +176,7 @@ $app->get('/com/', function() use($app) {
   //   $comments[] = $commentsStatement;
   // }
 
-  return $app['twig']->render('comments.twig', $comments);
+  return $app['twig']->render('comments.twig');
 });
 
 

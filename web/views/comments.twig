@@ -14,13 +14,7 @@
     </div>
     <div>
         <h1>Ce dont vous nous avez fait part</h1>
-        <ul>
-        {% for c in comments %}
-          <li> {{ c.content }} - {{ c.author }} - {{ c.comment_date }} - {{ c.likes }} </li>
-        {% else %}
-          <li>Personne n'a encore laissé de commentaire!</li>
-        {% endfor %}
-        </ul>
+        
     </div>
 </div>
 
