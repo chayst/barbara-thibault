@@ -60,6 +60,11 @@ $app->get('/witnesses', function () use ($app) {
   return $app['twig']->render('witnesses.twig');
 });
 
+$app->get('/presents', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('presents.twig');
+});
+
 // BR website
 $app->get('/br/home', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
@@ -79,6 +84,11 @@ $app->get('/br/organisation', function () use ($app) {
 $app->get('/br/witnesses', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('witnesses.twig');
+});
+
+$app->get('/br/presents', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('presents.twig');
 });
 
 
