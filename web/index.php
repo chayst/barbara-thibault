@@ -176,7 +176,10 @@ $app->get('/com/', function() use($app) {
   }
 
   return $app['twig']->render('comment.twig', array(
-    'comments' => $comments
+    'content' => $comments['content'],
+    'author' => $comments['author'],
+    'likes' => $comments['likes'],
+    'date' => $comments['comment_date']
   ));
 });
 
