@@ -92,7 +92,7 @@ $app->get('/org/trips', function () use ($app) {
 $app->post('/likeComment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   $commentId = $_POST['id'];
-  $commentLikes = intval($_POST['likes']);
+  $commentLikes = $_POST['like'];
   $updateLikes = $app['pdo']->prepare('UPDATE comments SET likes = :likes WHERE id = :id');
   $updateLikes->execute([
     'likes' => ++$commentLikes,
