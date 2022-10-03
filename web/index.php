@@ -99,6 +99,7 @@ $app->post('/likeComment', function () use ($app) {
     'id' => $commentId,
   ]);
   // header('Location: /comment');
+  // redirect to the anchor of the liked comment;
   $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments LIMIT 50');
   $commentsStatement->execute();
 
