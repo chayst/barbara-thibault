@@ -170,13 +170,15 @@ $app->get('/com/', function() use($app) {
   $commentsStatement->execute();
   $comments->fetchAll();
 
-  // $comments = array();
-  // while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
-  //   $app['monolog']->addDebug('Row ' . $row['id']);
-  //   $comments[] = $row;
-  // }
+  $comments = array();
+  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row['id']);
+    $comments[] = $row;
+  }
 
-  return $app['twig']->render('comments.twig', $comments);
+  return $app['twig']->render('comments.twig', array(
+    'comments' => $comments
+  ));
 });
 
 
