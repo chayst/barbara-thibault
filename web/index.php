@@ -91,7 +91,7 @@ $app->get('/org/trips', function () use ($app) {
 //comment
 $app->get('/comment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('comment.twig');
+  return $app['twig']->render('comments.twig');
 });
 
 $app->post('/likeComment', function () use ($app) {
@@ -104,7 +104,7 @@ $app->post('/likeComment', function () use ($app) {
     'id' => $commentId,
   ]);
   header('Location: /comment');
-  return $app['twig']->render('comment.twig');
+  return $app['twig']->render('comments.twig');
 });
 
 
