@@ -414,6 +414,39 @@ td a::after {
     align-items: center;
 }
 
+#comments {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.singleComment {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 500px;
+}
+
+.singleComment:nth-child(3) {
+    align-self: flex-end;
+}
+
+.commentAuthor {
+    font-weight: bold;
+}
+
+.commentDate {
+    font-weight: lighter;
+}
+
+.commentLike {
+    background-color: transparent;
+    content: var(--dark);
+    border: var(--dark);
+    border-radius: 1rem;
+}
+
 
 /* - Navigation - */
 

@@ -22,7 +22,7 @@
             <p>
               <form method="post" action="/likeComment">
                 <input type="hidden" name="id" value="{{ c.id }}" />
-                <input type="submit" name="like" value="{{ c.likes }}" />
+                <button type="submit" name="like" title="{{ c.likes }}"><img src="../icons/like.png" alt="likeIcon" /></button>
               </form>
             </p>
         {% else %}
