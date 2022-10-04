@@ -130,14 +130,9 @@ $app->post('/likeComment', function () use ($app) {
 
 $app->post('/addComment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments');
-  $commentsStatement->execute();
-
-  $comments = array();
-  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
-    $app['monolog']->addDebug('Row ' . $row['id']);
-    $comments[] = $row;
-  }
+  $commentsAnalisisStatement = $app['pdo']->prepare('SELECT * FROM comments');
+  $commentsAnalisisStatement->execute();
+  $commentsAnalisis = fetchAll();
 
   $commentContent = strip_tags($_POST['content']);
   $commentAuthor = strip_tags($_POST['author']);
@@ -160,8 +155,8 @@ $app->post('/addComment', function () use ($app) {
     $defaultAuthor=$commentAuthor;
   } else {
     $alreadyRegistered = false;
-    foreach($comments as $comment) {
-        if ($comment['content'] == $content) {
+    foreach($commentsAnalisis as $comment) {
+        if ($comment['content'] == $commentContent) {
           $alreadyRegistered = true;
         }
     }
@@ -172,7 +167,7 @@ $app->post('/addComment', function () use ($app) {
     } else {
       $commentError = false;
       $addComment = $app['pdo']->prepare('INSERT INTO comments(content, author) VALUES (:content, :author)');
-      $updateLikes->execute([
+      $addComment->execute([
         'content' => $commentContent,
         'author' => $commentAuthor,
       ]);
