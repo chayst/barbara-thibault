@@ -36,7 +36,10 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 // Home page
 $app->get('/', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
+  return $app['twig']->render('index.twig', array(
+    'currentNav' => 'home_fr',
+    'currentNavTitle' => 'Accueil'
+  ));
 });
 
 
@@ -45,21 +48,24 @@ $app->get('/', function () use ($app) {
 $app->get('/home', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('index.twig', array(
-    'currentNav' => 'home_fr'
+    'currentNav' => 'home_fr',
+    'currentNavTitle' => 'Accueil'
   ));
 });
 
 $app->get('/history', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('history.twig', array(
-    'currentNav' => 'history_fr'
+    'currentNav' => 'history_fr',
+    'currentNavTitle' => 'Notre Histoire'
   ));
 });
 
 $app->get('/witnesses', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('witnesses.twig', array(
-    'currentNav' => 'witnesses_fr'
+    'currentNav' => 'witnesses_fr',
+    'currentNavTitle' => 'Nos Témoins'
   ));
 });
 
@@ -75,7 +81,7 @@ $app->get('/presence', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('presence.twig', array(
     'currentNav' => 'presence_fr',
-    'currentNavTitle' => 'Liste de Cadeaux'
+    'currentNavTitle' => 'Confirmez votre Présence'
   ));
 });
 
@@ -83,28 +89,32 @@ $app->get('/presence', function () use ($app) {
 $app->get('/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('organisation.twig', array(
-    'currentNav' => 'organisation_fr'
+    'currentNav' => 'organisation_fr',
+    'currentNavTitle' => 'Organisation'
   ));
 });
 
 $app->get('/org/info', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('info.twig', array(
-    'currentNav' => 'org/info_fr'
+    'currentNav' => 'org/info_fr',
+    'currentNavTitle' => 'Organisation'
   ));
 });
 
 $app->get('/org/program', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('program.twig', array(
-    'currentNav' => 'org/program_fr'
+    'currentNav' => 'org/program_fr',
+    'currentNavTitle' => 'Organisation'
   ));
 });
 
 $app->get('/org/trips', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('trips.twig', array(
-    'currentNav' => 'org/trips_fr'
+    'currentNav' => 'org/trips_fr',
+    'currentNavTitle' => 'Organisation'
   ));
 });
 
@@ -121,7 +131,8 @@ $app->get('/comment', function() use($app) {
 
   return $app['twig']->render('comments.twig', array(
     'comments' => $comments,
-    'currentNav' => 'comment_fr'
+    'currentNav' => 'comment_fr',
+    'currentNavTitle' => 'Livre d\'Or'
   ));
 });
 
@@ -148,7 +159,8 @@ $app->post('/likeComment', function () use ($app) {
 
   return $app['twig']->render('comments.twig', array(
     'comments' => $comments,
-    'currentNav' => 'comment_fr'
+    'currentNav' => 'comment_fr',
+    'currentNavTitle' => 'Livre d\'Or'
   ));
 });
 
@@ -216,7 +228,8 @@ $app->post('/addComment', function () use ($app) {
     'commentPayload' => $commentPayload,
     'defaultContent' => $defaultContent,
     'defaultAuthor' => $defaultAuthor,
-    'currentNav' => 'comment_fr'
+    'currentNav' => 'comment_fr',
+    'currentNavTitle' => 'Livre d\'Or'
   ));
 });
 
