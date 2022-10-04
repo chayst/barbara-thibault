@@ -157,11 +157,11 @@ $app->post('/likeComment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   $commentId = strip_tags($_POST['id']);
   $commentLikes = strip_tags($_POST['like']);
+  $likeCommentError = false;
 
   if (!is_int($commentId) || !is_int($commentLikes)) {
     $likeCommentError = 'There has been an error. Please retry later.';
   } else {
-    $likeCommentError = false;
     $updateLikes = $app['pdo']->prepare('UPDATE comments SET likes = :likes WHERE id = :id');
     $updateLikes->execute([
       'likes' => ++$commentLikes,
