@@ -171,6 +171,10 @@ em {
     border: 1px solid #888;
 }
 
+#newDateModal>img {
+    margin: auto;
+}
+
 .close {
     color: #aaa;
     float: right;
