@@ -41,7 +41,7 @@ $app->get('/', function () use ($app) {
 
 
 
-// FR WEBSITE
+// --- FR WEBSITE ----
 $app->get('/home', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('index.twig');
@@ -67,7 +67,7 @@ $app->get('/presence', function () use ($app) {
   return $app['twig']->render('presence.twig');
 });
 
-//org
+//ORG HANDLERS
 $app->get('/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('organisation.twig');
@@ -88,19 +88,9 @@ $app->get('/org/trips', function () use ($app) {
   return $app['twig']->render('trips.twig');
 });
 
-//comment
-$app->post('/likeComment', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  $commentId = $_POST['id'];
-  $commentLikes = $_POST['like'];
-  $updateLikes = $app['pdo']->prepare('UPDATE comments SET likes = :likes WHERE id = :id');
-  $updateLikes->execute([
-    'likes' => ++$commentLikes,
-    'id' => $commentId,
-  ]);
-  // header('Location: /comment');
-  // redirect to the anchor of the liked comment;
-  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments LIMIT 50');
+// COMMENT HANDLERS
+$app->get('/comment', function() use($app) {
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments');
   $commentsStatement->execute();
 
   $comments = array();
@@ -112,11 +102,108 @@ $app->post('/likeComment', function () use ($app) {
   return $app['twig']->render('comments.twig', array(
     'comments' => $comments
   ));
-  return $app['twig']->render('comments.twig');
+});
+$app->post('/likeComment', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  $commentId = $_POST['id'];
+  $commentLikes = $_POST['like'];
+  $updateLikes = $app['pdo']->prepare('UPDATE comments SET likes = :likes WHERE id = :id');
+  $updateLikes->execute([
+    'likes' => ++$commentLikes,
+    'id' => $commentId,
+  ]);
+  // header('Location: /comment');
+  // redirect to the anchor of the liked comment;
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments');
+  $commentsStatement->execute();
+
+  $comments = array();
+  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row['id']);
+    $comments[] = $row;
+  }
+
+  return $app['twig']->render('comments.twig', array(
+    'comments' => $comments
+  ));
+});
+
+$app->post('/addComment', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments');
+  $commentsStatement->execute();
+
+  $comments = array();
+  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row['id']);
+    $comments[] = $row;
+  }
+
+  $commentContent = strip_tags($_POST['content']);
+  $commentAuthor = strip_tags($_POST['author']);
+  $commentError = true;
+  if (!isset($_POST['content']) && !isset($_POST['author'])) {
+    $commentPayload = 'Il faut un contenu et un auteur pour soumettre le formulaire.';
+    $defaultContent='';
+    $defaultAuthor='';
+  } elseif (!isset($_POST['content']) && isset($_POST['author'])) {
+    $commentPayload = 'Il faut un contenu et un auteur pour soumettre le formulaire.';
+    $defaultContent='';
+    $defaultAuthor=$commentAuthor;
+  } elseif (isset($_POST['content']) && !isset($_POST['author'])) {
+    $commentPayload = 'Il faut un contenu et un auteur pour soumettre le formulaire.';
+    $defaultContent=$commentContent;
+    $defaultAuthor='';
+  } elseif (strlen($commentContent)>500 || strlen($commentAuthor)>128) {
+    $commentPayload = 'L\'une de vos réponse contient trop de caractères : les maxima sont de 500 pour votre commentaire et 128 pour votre nom.';
+    $defaultContent=$commentContent;
+    $defaultAuthor=$commentAuthor;
+  } else {
+    $alreadyRegistered = false;
+    foreach($comments as $comment) {
+        if ($comment['content'] == $content) {
+          $alreadyRegistered = true;
+        }
+    }
+    if ($alreadyRegistered) {
+      $commentPayload = 'Erreur: ce message a déjà été enregistré.';
+      $defaultContent=$commentContent;
+      $defaultAuthor=$commentAuthor;
+    } else {
+      $commentError = false;
+      $addComment = $app['pdo']->prepare('INSERT INTO comments(content, author) VALUES (:content, :author)');
+      $updateLikes->execute([
+        'content' => $commentContent,
+        'author' => $commentAuthor,
+      ]);
+    }
+  }
+  
+  // header('Location: /comment');
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments LIMIT 50');
+  $commentsStatement->execute();
+
+  $comments = array();
+  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row['id']);
+    $comments[] = $row;
+  }
+
+  return $app['twig']->render('post_comment.twig', array(
+    'comments' => $comments,
+    'commentError' => $commentError,
+    'commentPayload' => $commentPayload,
+    'defaultContent' => $defaultContent,
+    'defaultAuthor' => $defaultAuthor
+  ));
 });
 
 
-// BR website
+
+
+
+
+// --- BR website ---
 $app->get('/br/home', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/index.twig');
@@ -187,21 +274,7 @@ $app->get('/br/comment', function () use ($app) {
 
 
 
-// ACCESS TO COMMENT
-$app->get('/comment', function() use($app) {
-  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments LIMIT 50');
-  $commentsStatement->execute();
 
-  $comments = array();
-  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
-    $app['monolog']->addDebug('Row ' . $row['id']);
-    $comments[] = $row;
-  }
-
-  return $app['twig']->render('comments.twig', array(
-    'comments' => $comments
-  ));
-});
 
 
 

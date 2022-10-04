@@ -4,13 +4,18 @@
 <div id="commentBody">
     <div id="commentForm">    
         <h1>Laissez-nous un mot</h1>
-        <form method="post" action="postComment.php">
-            <label>Commentaire :</label><br/>
-            <textarea name="content" id="comment" placeholder="Votre message pour les mariés" rows="4" cols="60" required></textarea>
-            <input type="text" name="author" placeholder="Votre nom" required />
-            <input type="submit" value="Envoyer" />
-        </form>
-        <p><em>Une fois envoyé, votre commentaire sera ajouté à la liste que vous pouvez trouver ci-dessous</em>></p>
+        {{% if commentError %}}
+          <p style="color:red;">{{ commentPayload }}</p>
+          <form method="post" action="postComment.php">
+              <label>Commentaire :</label><br/>
+              <textarea name="content" id="comment" placeholder="Votre message pour les mariés" rows="4" cols="60" required>{{ commentContent }}</textarea>
+              <input type="text" name="author" placeholder="Votre nom" value="{{ commentAuthor }}" required/>
+              <input type="submit" value="Envoyer" />
+          </form>
+          <p><em>Une fois envoyé, votre commentaire sera ajouté à la liste que vous pouvez trouver ci-dessous</em>></p>
+        {{% else %}}
+          <p style="color:green;">Merci de votre participation. <a href="/comment"> Rafraîchir la page.</a></p>
+        {{% endif %}}
     </div>
     <div>
         <h1>Ce dont vous nous avez fait part</h1>
