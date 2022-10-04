@@ -4,7 +4,7 @@
 <div id="commentBody">
     <div id="commentForm">    
         <h1>Laissez-nous un mot</h1>
-        {{% if commentError == true %}}
+        {% if commentError == true %}
           <p style="color:red;">{{ commentPayload }}</p>
           <form method="post" action="addComment">
               <label>Commentaire :</label><br/>
@@ -13,9 +13,9 @@
               <input type="submit" value="Envoyer" />
           </form>
           <p><em>Une fois envoyé, votre commentaire sera ajouté à la liste que vous pouvez trouver ci-dessous</em>></p>
-        {{% else %}}
+        {% else %}
           <p style="color:green;">Merci de votre participation. <a href="/comment"> Rafraîchir la page.</a></p>
-        {{% endif %}}
+        {% endif %}
     </div>
     <div>
         <h1>Ce dont vous nous avez fait part</h1>
