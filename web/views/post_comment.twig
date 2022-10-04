@@ -6,7 +6,7 @@
         <h1>Laissez-nous un mot</h1>
         {{% if commentError %}}
           <p style="color:red;">{{ commentPayload }}</p>
-          <form method="post" action="postComment.php">
+          <form method="post" action="postComment">
               <label>Commentaire :</label><br/>
               <textarea name="content" id="comment" placeholder="Votre message pour les mariés" rows="4" cols="60" required>{{ commentContent }}</textarea>
               <input type="text" name="author" placeholder="Votre nom" value="{{ commentAuthor }}" required/>
