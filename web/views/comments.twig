@@ -23,6 +23,7 @@
               <input type="hidden" name="id" value="{{ c.id }}" />
               <button type="submit" class="commentLike" name="like" value="{{ c.likes }}"><img src="../icons/like.png" alt="likeIcon" />{{ c.likes }}</button>
             </form>
+          </div>
         {% else %}
           <p>Personne n'a encore laissé de commentaire...</p>
         {% endfor %}
