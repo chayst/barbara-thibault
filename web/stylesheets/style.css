@@ -155,14 +155,15 @@ em {
     display: "block";
     position: fixed;
     /* Stay in place */
-    z-index: 1;
+    z-index: 3;
     /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 20%;
+    margin: auto;
+    width: 100%;
     /* Full width */
-    height: 20%;
+    height: 100%;
     /* Full height */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
 .close {

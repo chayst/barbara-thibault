@@ -32,13 +32,13 @@
   updateCountDown();
 
   // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
+  closeModal.onclick = function() {
     openedModal.style.display = "none";
   }
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target == openedModal) {
       openedModal.style.display = "none";
     }
   }
