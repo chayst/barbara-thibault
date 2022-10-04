@@ -494,6 +494,11 @@ td a::after {
     background: transparent;
 }
 
+.commentLike>img {
+    margin-left: 2px;
+    margin-right: 4px;
+}
+
 .commentLike:hover {
     background: var(--dark);
     color: var(--light);
