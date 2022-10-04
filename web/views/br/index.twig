@@ -1,0 +1,29 @@
+{% extends "layout.html" %} 
+{% block content %}
+  {% if cookie==false %}
+    <p> Welcome</p>
+  {% else %}
+    {{ cookie }}
+  {% endif %}
+<h1><span id="daysLeft">daysLeft</span> jours restants</h1>
+<div id="homeBody">
+  <img
+    src="../images/home/home.jpg"
+    alt="Welcome picture on Thibault and Barbara wedding's site"
+  />
+</div>
+<script>
+  const updateCountDown = function() {
+    // Jours Restants
+    const weddingDate = new Date(2023, 5, 20);
+    const today = new Date();
+    const elapsedTime = weddingDate.getTime() - today.getTime();
+    const daysLeft = Math.floor(elapsedTime / (1000 * 3600 * 24));
+
+    document.getElementById("daysLeft").innerText = daysLeft;
+    return daysLeft
+  }
+
+  updateCountDown();
+</script>
+{% endblock %}

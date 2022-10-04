@@ -37,6 +37,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->get('/', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   $ipUser = $_SERVER['REMOTE_ADDR'];
+  // $countryUser = geoip_country_code_by_name($ipUser);
   if (!isset($_COOKIE['CONNECTED_ONCE'])) {
     $cookie = false;
     setcookie(
@@ -223,7 +224,7 @@ $app->post('/addComment', function () use ($app) {
         }
     }
     if ($alreadyRegistered) {
-      $commentPayload = 'Erreur: ce message a déjà été enregistré.';
+      $commentPayload = 'Erreur : ce message a déjà été enregistré.';
       $defaultContent=$commentContent;
       $defaultAuthor=$commentAuthor;
     } else {
@@ -263,55 +264,202 @@ $app->post('/addComment', function () use ($app) {
 
 
 
-// --- BR website ---
+// --- BRAZILIAN - BR - WEBSITE ----
 $app->get('/br/home', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('br/index.twig');
+  return $app['twig']->render('br/index.twig', array(
+    'currentNav' => 'home_br',
+    'currentNavTitle' => 'Home'
+  ));
 });
 
 $app->get('/br/history', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('br/history.twig');
+  return $app['twig']->render('br/history.twig', array(
+    'currentNav' => 'history_br',
+    'currentNavTitle' => 'Os noivos'
+  ));
 });
 
 $app->get('/br/witnesses', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('br/witnesses.twig');
-});
-
-$app->get('/br/organisation', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('br/organisation.twig');
-});
-
-$app->get('/br/org/info', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('br/info.twig');
-});
-
-$app->get('/br/org/program', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('br/program.twig');
-});
-
-$app->get('/br/org/trips', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('br/trips.twig');
+  return $app['twig']->render('br/witnesses.twig', array(
+    'currentNav' => 'witnesses_br',
+    'currentNavTitle' => 'Nossos Padrinhos'
+  ));
 });
 
 $app->get('/br/presents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('br/presents.twig');
+  return $app['twig']->render('br/presents.twig', array(
+    'currentNav' => 'present_br',
+    'currentNavTitle' => 'Lista de Presentes'
+  ));
 });
 
 $app->get('/br/presence', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('br/presence.twig');
+  return $app['twig']->render('br/presence.twig', array(
+    'currentNav' => 'presence_br',
+    'currentNavTitle' => 'Confirme sua presença'
+  ));
 });
 
-$app->get('/br/comment', function () use ($app) {
+//ORG HANDLERS
+$app->get('/br/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('br/comment.twig');
+  return $app['twig']->render('br/organisation.twig', array(
+    'currentNav' => 'organisation_br',
+    'currentNavTitle' => 'Organização'
+  ));
+});
+
+$app->get('/br/org/info', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/info.twig', array(
+    'currentNav' => 'org/info_br',
+    'currentNavTitle' => 'Organização'
+  ));
+});
+
+$app->get('/br/org/program', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/program.twig', array(
+    'currentNav' => 'org/program_br',
+    'currentNavTitle' => 'Organização'
+  ));
+});
+
+$app->get('/br/org/trips', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/trips.twig', array(
+    'currentNav' => 'org/trips_br',
+    'currentNavTitle' => 'Organização'
+  ));
+});
+
+// COMMENT HANDLERS
+$app->get('/br/comment', function() use($app) {
+  $likeCommentError = false;
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments ORDER BY date DESC LIMIT 50');
+  $commentsStatement->execute();
+
+  $comments = array();
+  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row['id']);
+    $comments[] = $row;
+  }
+
+  return $app['twig']->render('br/comments.twig', array(
+    'comments' => $comments,
+    'likeCommentError' => $likeCommentError,
+    'currentNav' => 'comment_br',
+    'currentNavTitle' => 'Mensagem aos noivos'
+  ));
+});
+
+//likeComment
+$app->post('/br/likeComment', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  $commentId = strip_tags($_POST['id']);
+  $commentLikes = strip_tags($_POST['like']);
+  $likeCommentError = false;
+
+  if (!isset($commentId) || !isset($commentLikes)) {
+    $likeCommentError = 'There has been an error. Please retry later.';
+  } else {
+    $updateLikes = $app['pdo']->prepare('UPDATE comments SET likes = :likes WHERE id = :id');
+    $updateLikes->execute([
+      'likes' => ++$commentLikes,
+      'id' => $commentId,
+  ]);
+  }
+  // header('Location: /comment');
+  // redirect to the anchor of the liked comment;
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments ORDER BY date DESC LIMIT 50');
+  $commentsStatement->execute();
+
+  $comments = array();
+  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row['id']);
+    $comments[] = $row;
+  }
+
+  return $app['twig']->render('br/comments.twig', array(
+    'comments' => $comments,
+    'likeCommentError' => $likeCommentError,
+    'currentNav' => 'comment_br',
+    'currentNavTitle' => 'Mensagem aos noivos'
+  ));
+});
+
+//addComment
+$app->post('/br/addComment', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  $commentsAnalisisStatement = $app['pdo']->prepare('SELECT * FROM comments');
+  $commentsAnalisisStatement->execute();
+  $commentsAnalisis = $commentsAnalisisStatement->fetchAll();
+
+  $commentContent = strip_tags($_POST['content']);
+  $commentAuthor = strip_tags($_POST['author']);
+  $commentError = true;
+  if (!isset($_POST['content']) && !isset($_POST['author'])) {
+    $commentPayload = 'Precisa ter um conteúdo e um autor para mandar o formulario.';
+    $defaultContent='';
+    $defaultAuthor='';
+  } elseif (!isset($_POST['content']) && isset($_POST['author'])) {
+    $commentPayload = 'Precisa ter um conteúdo e um autor para mandar o formulario.';
+    $defaultContent='';
+    $defaultAuthor=$commentAuthor;
+  } elseif (isset($_POST['content']) && !isset($_POST['author'])) {
+    $commentPayload = 'Precisa ter um conteúdo e um autor para mandar o formulario.';
+    $defaultContent=$commentContent;
+    $defaultAuthor='';
+  } elseif (strlen($commentContent)>500 || strlen($commentAuthor)>128) {
+    $commentPayload = 'Uma das suas entradas ta larga demais : o max è de 500 caracterios pro commentario e 128 pelo nome.';
+    $defaultContent=$commentContent;
+    $defaultAuthor=$commentAuthor;
+  } else {
+    $alreadyRegistered = false;
+    foreach($commentsAnalisis as $comment) {
+        if ($comment['content'] == $commentContent) {
+          $alreadyRegistered = true;
+        }
+    }
+    if ($alreadyRegistered) {
+      $commentPayload = 'Error: esta mensagem ja foi registrada.';
+      $defaultContent=$commentContent;
+      $defaultAuthor=$commentAuthor;
+    } else {
+      $commentError = false;
+      $addComment = $app['pdo']->prepare('INSERT INTO comments(content, author, likes) VALUES (:content, :author, :likes)');
+      $addComment->execute([
+        'content' => $commentContent,
+        'author' => $commentAuthor,
+        'likes' => 0,
+      ]);
+    }
+  }
+  
+  // header('Location: /comment');
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments ORDER BY date DESC LIMIT 50');
+  $commentsStatement->execute();
+
+  $comments = array();
+  while ($row = $commentsStatement->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row['id']);
+    $comments[] = $row;
+  }
+
+  return $app['twig']->render('br/addComment.twig', array(
+    'comments' => $comments,
+    'commentError' => $commentError,
+    'commentPayload' => $commentPayload,
+    'defaultContent' => $defaultContent,
+    'defaultAuthor' => $defaultAuthor,
+    'currentNav' => 'comment_br',
+    'currentNavTitle' => 'Mensagem aos noivos'
+  ));
 });
 
 
