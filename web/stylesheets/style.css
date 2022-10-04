@@ -152,40 +152,25 @@ em {
 }
 
 #newDateModal {
-    display: "block";
     position: fixed;
     /* Stay in place */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 0;
     z-index: 3;
-    /* Sit on top */
-    max-width: 100%;
-    /* Full width */
-    max-height: 100%;
-    /* Full height */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-    margin: auto;
-    border: 1px solid #888;
+    left: 0;
+    top: 0;
+    background-color: rgb(0, 0, 0);
+    /* Black fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/opacity */
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
 }
 
 #newDateModal>img {
     margin: auto;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 50px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 
