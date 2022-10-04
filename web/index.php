@@ -44,48 +44,68 @@ $app->get('/', function () use ($app) {
 // --- FR WEBSITE ----
 $app->get('/home', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
+  return $app['twig']->render('index.twig', array(
+    'currentNav' => 'home_fr'
+  ));
 });
 
 $app->get('/history', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('history.twig');
+  return $app['twig']->render('history.twig', array(
+    'currentNav' => 'history_fr'
+  ));
 });
 
 $app->get('/witnesses', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('witnesses.twig');
+  return $app['twig']->render('witnesses.twig', array(
+    'currentNav' => 'witnesses_fr'
+  ));
 });
 
 $app->get('/presents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('presents.twig');
+  return $app['twig']->render('presents.twig', array(
+    'currentNav' => 'present_fr',
+    'currentNavTitle' => 'Liste de Cadeaux'
+  ));
 });
 
 $app->get('/presence', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('presence.twig');
+  return $app['twig']->render('presence.twig', array(
+    'currentNav' => 'presence_fr',
+    'currentNavTitle' => 'Liste de Cadeaux'
+  ));
 });
 
 //ORG HANDLERS
 $app->get('/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('organisation.twig');
+  return $app['twig']->render('organisation.twig', array(
+    'currentNav' => 'organisation_fr'
+  ));
 });
 
 $app->get('/org/info', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('info.twig');
+  return $app['twig']->render('info.twig', array(
+    'currentNav' => 'org/info_fr'
+  ));
 });
 
 $app->get('/org/program', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('program.twig');
+  return $app['twig']->render('program.twig', array(
+    'currentNav' => 'org/program_fr'
+  ));
 });
 
 $app->get('/org/trips', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('trips.twig');
+  return $app['twig']->render('trips.twig', array(
+    'currentNav' => 'org/trips_fr'
+  ));
 });
 
 // COMMENT HANDLERS
@@ -100,7 +120,8 @@ $app->get('/comment', function() use($app) {
   }
 
   return $app['twig']->render('comments.twig', array(
-    'comments' => $comments
+    'comments' => $comments,
+    'currentNav' => 'comment_fr'
   ));
 });
 
@@ -126,7 +147,8 @@ $app->post('/likeComment', function () use ($app) {
   }
 
   return $app['twig']->render('comments.twig', array(
-    'comments' => $comments
+    'comments' => $comments,
+    'currentNav' => 'comment_fr'
   ));
 });
 
@@ -193,7 +215,8 @@ $app->post('/addComment', function () use ($app) {
     'commentError' => $commentError,
     'commentPayload' => $commentPayload,
     'defaultContent' => $defaultContent,
-    'defaultAuthor' => $defaultAuthor
+    'defaultAuthor' => $defaultAuthor,
+    'currentNav' => 'comment_fr'
   ));
 });
 

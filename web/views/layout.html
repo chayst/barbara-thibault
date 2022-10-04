@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  {% include 'header.html' %}
+    <meta charset="utf-8" name="{{ currentNav }}" />
+    <title>Barbara et Thibault | {{ currentNavTitle }}</title>
+    {% include 'header.html' %}
 </head>
 
 <body>
-  {% include 'nav.html' %}
-
-  {% block content %}{% endblock %}
-
-  {% include 'footer.html' %}
+    {% include 'nav.html' %} {% block content %}{% endblock %} {% include 'footer.html' %}
 </body>
+
 </html>
