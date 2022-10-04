@@ -104,6 +104,7 @@ $app->get('/comment', function() use($app) {
   ));
 });
 
+//likeComment
 $app->post('/likeComment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   $commentId = $_POST['id'];
@@ -129,6 +130,7 @@ $app->post('/likeComment', function () use ($app) {
   ));
 });
 
+//addComment
 $app->post('/addComment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   $commentsAnalisisStatement = $app['pdo']->prepare('SELECT * FROM comments');
@@ -167,10 +169,11 @@ $app->post('/addComment', function () use ($app) {
       $defaultAuthor=$commentAuthor;
     } else {
       $commentError = false;
-      $addComment = $app['pdo']->prepare('INSERT INTO comments(content, author) VALUES (:content, :author)');
+      $addComment = $app['pdo']->prepare('INSERT INTO comments(content, author, likes) VALUES (:content, :author, :likes)');
       $addComment->execute([
         'content' => $commentContent,
         'author' => $commentAuthor,
+        'likes' => 0,
       ]);
     }
   }
