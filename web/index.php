@@ -36,10 +36,20 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 // Home page
 $app->get('/', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
+  $ipUser = $_SERVER['REMOTE_ADDR'];
   return $app['twig']->render('index.twig', array(
     'currentNav' => 'home_fr',
     'currentNavTitle' => 'Accueil'
   ));
+  setcookie(
+    'CONNECTED_ONCE',
+    $ipUser,
+    [
+        'expires' => time() + 365*24*3600,
+        'secure' => true,
+        'httponly' => true,
+    ]
+  );
 });
 
 
@@ -139,13 +149,18 @@ $app->get('/comment', function() use($app) {
 //likeComment
 $app->post('/likeComment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
-  $commentId = $_POST['id'];
-  $commentLikes = $_POST['like'];
-  $updateLikes = $app['pdo']->prepare('UPDATE comments SET likes = :likes WHERE id = :id');
-  $updateLikes->execute([
-    'likes' => ++$commentLikes,
-    'id' => $commentId,
+  $commentId = strip_tags($_POST['id']);
+  $commentLikes = strip_tags($_POST['like']);
+
+  if (!is_int($commentId) || !is_int($commentLikes)) {
+    $likeCommentError = 'There has been an error. Please retry later.';
+  } else {
+    $updateLikes = $app['pdo']->prepare('UPDATE comments SET likes = :likes WHERE id = :id');
+    $updateLikes->execute([
+      'likes' => ++$commentLikes,
+      'id' => $commentId,
   ]);
+  }
   // header('Location: /comment');
   // redirect to the anchor of the liked comment;
   $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments ORDER BY date DESC LIMIT 50');
@@ -159,6 +174,7 @@ $app->post('/likeComment', function () use ($app) {
 
   return $app['twig']->render('comments.twig', array(
     'comments' => $comments,
+    'likeCommentError' => $likeCommentError,
     'currentNav' => 'comment_fr',
     'currentNavTitle' => 'Livre d\'Or'
   ));

@@ -14,6 +14,9 @@
     </div>
     <div>
         <h1>Ce dont vous nous avez fait part</h1>
+        {% if isset(likeCommentError) %}
+          <p>{{ likeCommentError }}</p>
+        {% endif %}
         <section id="comments">
         {% for c in comments %}
           <div class="singleComment">

@@ -1,5 +1,10 @@
 {% extends "layout.html" %} 
 {% block content %}
+  {% if (!isset($_COOKIE['CONNECTED_ONCE'])) %}
+    <p> Welcome</p>
+  {% else %}
+    {{ $_COOKIE['CONNECTED_ONCE'] }}
+  {% endif %}
 <h1><span id="daysLeft">daysLeft</span> jours restants</h1>
 <div id="homeBody">
   <img
