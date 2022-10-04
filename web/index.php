@@ -161,7 +161,7 @@ $app->post('/likeComment', function () use ($app) {
   $commentLikes = strip_tags($_POST['like']);
   $likeCommentError = false;
 
-  if (!is_int($commentId) || !is_int($commentLikes)) {
+  if (!isset($commentId) || !isset($commentLikes)) {
     $likeCommentError = 'There has been an error. Please retry later.';
   } else {
     $updateLikes = $app['pdo']->prepare('UPDATE comments SET likes = :likes WHERE id = :id');
