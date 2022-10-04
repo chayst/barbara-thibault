@@ -441,6 +441,10 @@ td a::after {
     align-self: flex-end;
 }
 
+.singleComment>form>button {
+    cursor: pointer;
+}
+
 .commentAuthor {
     font-weight: bold;
 }
@@ -458,6 +462,11 @@ td a::after {
     border: solid 0.5px var(--dark);
     border-radius: 1rem;
     background: transparent;
+}
+
+.commentLike:hover {
+    background: var(--dark);
+    text-decoration-color: var(--light);
 }
 
 
