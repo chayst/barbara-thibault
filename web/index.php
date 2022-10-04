@@ -52,6 +52,7 @@ $app->get('/', function () use ($app) {
   } else {
     $cookie = $_COOKIE['CONNECTED_ONCE'];
   }
+  // if $ipUser include BR then render br/index
   return $app['twig']->render('index.twig', array(
     'cookie' => $cookie,
     'currentNav' => 'home_fr',

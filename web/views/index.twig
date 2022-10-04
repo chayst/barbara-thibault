@@ -4,8 +4,6 @@
     <div id="newDateModal">
       <img src="/images/saveNewDate.png" alt="Save the New Date flyer" />
     </div>
-  {% else %}
-    {{ cookie }}
   {% endif %}
 <div id="homeBody">
 <h1><span id="daysLeft">daysLeft</span> jours restants</h1>
@@ -29,7 +27,6 @@
   updateCountDown();
 </script>
 <script>
-  console.log('hello')
   var modal = document.getElementById("newDateModal");
   modal.style.height = "100%";
 
@@ -37,9 +34,7 @@
   window.addEventListener("click", function(event) {
     if (event.target == modal) {
       modal.style.height = "0%";
-      console.log("closefromelsewher")
     }
   });
-  console.log('goodbye')
 </script>
 {% endblock %}

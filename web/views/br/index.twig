@@ -1,12 +1,12 @@
 {% extends "layout.html" %} 
 {% block content %}
   {% if cookie==false %}
-    <p> Welcome</p>
-  {% else %}
-    {{ cookie }}
+    <div id="newDateModal">
+      <img src="/images/saveNewDate.png" alt="Save the New Date flyer" />
+    </div>
   {% endif %}
-<h1><span id="daysLeft">daysLeft</span> jours restants</h1>
 <div id="homeBody">
+<h1><span id="daysLeft">daysLeft</span> jours restants</h1>
   <img
     src="/images/home/home.jpg"
     alt="Welcome picture on Thibault and Barbara wedding's site"
@@ -25,5 +25,16 @@
   }
 
   updateCountDown();
+</script>
+<script>
+  var modal = document.getElementById("newDateModal");
+  modal.style.height = "100%";
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.addEventListener("click", function(event) {
+    if (event.target == modal) {
+      modal.style.height = "0%";
+    }
+  });
 </script>
 {% endblock %}
