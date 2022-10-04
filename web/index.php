@@ -37,19 +37,25 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->get('/', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   $ipUser = $_SERVER['REMOTE_ADDR'];
+  if (!isset($_COOKIE['CONNECTED_ONCE'])) {
+    $cookie = false;
+    setcookie(
+      'CONNECTED_ONCE',
+      $ipUser,
+      [
+          'expires' => time() + 365*24*3600,
+          'secure' => true,
+          'httponly' => true,
+      ]
+    );
+  } else {
+    $cookie = $_COOKIE['CONNECTED_ONCE'];
+  }
   return $app['twig']->render('index.twig', array(
+    'cookie' => $cookie,
     'currentNav' => 'home_fr',
     'currentNavTitle' => 'Accueil'
   ));
-  setcookie(
-    'CONNECTED_ONCE',
-    $ipUser,
-    [
-        'expires' => time() + 365*24*3600,
-        'secure' => true,
-        'httponly' => true,
-    ]
-  );
 });
 
 

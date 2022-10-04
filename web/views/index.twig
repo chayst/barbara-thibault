@@ -1,9 +1,9 @@
 {% extends "layout.html" %} 
 {% block content %}
-  {% if $_COOKIE['CONNECTED_ONCE']!='' %}
+  {% if cookie==false %}
     <p> Welcome</p>
   {% else %}
-    {{ $_COOKIE['CONNECTED_ONCE'] }}
+    {{ cookie }}
   {% endif %}
 <h1><span id="daysLeft">daysLeft</span> jours restants</h1>
 <div id="homeBody">
