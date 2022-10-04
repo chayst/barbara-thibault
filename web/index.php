@@ -103,6 +103,7 @@ $app->get('/comment', function() use($app) {
     'comments' => $comments
   ));
 });
+
 $app->post('/likeComment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   $commentId = $_POST['id'];
