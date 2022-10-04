@@ -64,7 +64,24 @@ $app->get('/', function () use ($app) {
 // --- FR WEBSITE ----
 $app->get('/home', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
+  $ipUser = $_SERVER['REMOTE_ADDR'];
+  // $countryUser = geoip_country_code_by_name($ipUser);
+  if (!isset($_COOKIE['CONNECTED_ONCE'])) {
+    $cookie = false;
+    setcookie(
+      'CONNECTED_ONCE',
+      $ipUser,
+      [
+          'expires' => time() + 365*24*3600,
+          'secure' => true,
+          'httponly' => true,
+      ]
+    );
+  } else {
+    $cookie = $_COOKIE['CONNECTED_ONCE'];
+  }
   return $app['twig']->render('index.twig', array(
+    'cookie' => $cookie,
     'currentNav' => 'home_fr',
     'currentNavTitle' => 'Accueil'
   ));
@@ -224,7 +241,7 @@ $app->post('/addComment', function () use ($app) {
         }
     }
     if ($alreadyRegistered) {
-      $commentPayload = 'Erreur : ce message a déjà été enregistré.';
+      $commentPayload = 'Erreur s: ce message a déjà été enregistré.';
       $defaultContent=$commentContent;
       $defaultAuthor=$commentAuthor;
     } else {
@@ -267,7 +284,24 @@ $app->post('/addComment', function () use ($app) {
 // --- BRAZILIAN - BR - WEBSITE ----
 $app->get('/br/home', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
+  $ipUser = $_SERVER['REMOTE_ADDR'];
+  // $countryUser = geoip_country_code_by_name($ipUser);
+  if (!isset($_COOKIE['CONNECTED_ONCE'])) {
+    $cookie = false;
+    setcookie(
+      'CONNECTED_ONCE',
+      $ipUser,
+      [
+          'expires' => time() + 365*24*3600,
+          'secure' => true,
+          'httponly' => true,
+      ]
+    );
+  } else {
+    $cookie = $_COOKIE['CONNECTED_ONCE'];
+  }
   return $app['twig']->render('br/index.twig', array(
+    'cookie' => $cookie,
     'currentNav' => 'home_br',
     'currentNavTitle' => 'Home'
   ));
