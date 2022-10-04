@@ -189,7 +189,7 @@ $app->post('/addComment', function () use ($app) {
     $comments[] = $row;
   }
 
-  return $app['twig']->render('post_comment.twig', array(
+  return $app['twig']->render('addComment.twig', array(
     'comments' => $comments,
     'commentError' => $commentError,
     'commentPayload' => $commentPayload,
