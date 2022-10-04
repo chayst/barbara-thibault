@@ -90,7 +90,7 @@ $app->get('/org/trips', function () use ($app) {
 
 // COMMENT HANDLERS
 $app->get('/comment', function() use($app) {
-  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments');
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments ORDER BY date DESC LIMIT 50');
   $commentsStatement->execute();
 
   $comments = array();
@@ -116,7 +116,7 @@ $app->post('/likeComment', function () use ($app) {
   ]);
   // header('Location: /comment');
   // redirect to the anchor of the liked comment;
-  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments');
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments ORDER BY date DESC LIMIT 50');
   $commentsStatement->execute();
 
   $comments = array();
@@ -179,7 +179,7 @@ $app->post('/addComment', function () use ($app) {
   }
   
   // header('Location: /comment');
-  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments LIMIT 50');
+  $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments ORDER BY date DESC LIMIT 50');
   $commentsStatement->execute();
 
   $comments = array();
