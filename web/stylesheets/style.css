@@ -466,14 +466,14 @@ td a::after {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 800px;
+    width: 600px;
     margin-top: 40px;
     /* starting borders code */
     padding: 10px;
     background-image: linear-gradient(var(--dark), var(--dark)), linear-gradient(var(--dark), var(--dark)), linear-gradient(var(--dark), var(--dark)), linear-gradient(var(--dark), var(--dark)), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
-    background-size: 4px 30px, 30px 4px, 4px 30px, 30px 4px, calc(100% - 8px) calc(100% - 8px);
-    background-position: left bottom, left bottom, right top, right top, 4px 4px;
+    background-size: 2px 30px, 30px 2px, 2px 30px, 30px 2px, calc(100% - 8px) calc(100% - 8px);
+    background-position: left bottom, left bottom, right top, right top, 2px 2px;
 }
 
 .singleComment>p {
