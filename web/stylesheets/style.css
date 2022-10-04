@@ -222,6 +222,7 @@ em {
     flex-direction: column;
     text-align: justify;
     max-width: 500px;
+    min-width: 300px;
     margin-left: 40px;
 }
 
@@ -255,6 +256,7 @@ em {
 .witness p {
     margin-left: 20px;
     max-width: 400px;
+    min-width: 250px;
 }
 
 .witness p::first-letter {
@@ -464,10 +466,14 @@ td a::after {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    max-width: 800px;
-    padding-bottom: 10px;
-    margin-top: 10px;
-    border-bottom: solid 1px var(--dark);
+    width: 800px;
+    margin-top: 20px;
+    /* starting borders code */
+    padding: 10px;
+    background-image: linear-gradient(purple, purple), linear-gradient(purple, purple), linear-gradient(purple, purple), linear-gradient(purple, purple), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: 4px 20%, 20% 4px, 4px 20%, 20% 4px, calc(100% - 8px) calc(100% - 8px);
+    background-position: left bottom, left bottom, right top, right top, 4px 4px;
 }
 
 .singleComment>p {

@@ -24,7 +24,7 @@
             <p><span class="commentContent">{{ c.content }}</span></ps>
             <form method="post" action="/likeComment">
               <input type="hidden" name="id" value="{{ c.id }}" />
-              <button type="submit" class="commentLike" name="like" value="{{ c.likes }}"><img src="../icons/like.png" alt="likeIcon" />{{ c.likes }}</button>
+              <button type="submit" class="commentLike" name="like" value="{{ c.likes }}"><img src="/icons/like_dark.png" alt="likeIcon" />{{ c.likes }}</button>
             </form>
           </div>
         {% else %}
@@ -33,5 +33,25 @@
         </section>
     </div>
 </div>
+
+<script>
+    const commentLikes = document.getElementsByClassName("commentLike");
+    
+    let displayLikeLight = function() {
+      this.children[0].setAttribute("src", "/icons/like_light.png");
+    }
+
+    let displayLikeDark = function() {
+      this.children[0].setAttribute("src", "/icons/like_dark.png");
+    }
+    
+    for (var i=0; i < commentLikes.length; i++) {
+      commentLikes[i].addEventListener('mouseenter', displayLikeLight);
+    }
+
+    for (var i=0; i < commentLikes.length; i++) {
+      commentLikes[i].addEventListener('mouseleave', displayLikeDark);
+    }
+</script>
 
 {% endblock %}
