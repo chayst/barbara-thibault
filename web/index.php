@@ -92,7 +92,7 @@ $app->get('/history', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('history.twig', array(
     'currentNav' => 'history_fr',
-    'currentNavTitle' => 'Notre Histoire'
+    'currentNavTitle' => 'Les Mariés'
   ));
 });
 
@@ -242,7 +242,7 @@ $app->post('/addComment', function () use ($app) {
         }
     }
     if ($alreadyRegistered) {
-      $commentPayload = 'Erreur s: ce message a déjà été enregistré.';
+      $commentPayload = 'Erreur : ce message a déjà été enregistré.';
       $defaultContent=$commentContent;
       $defaultAuthor=$commentAuthor;
     } else {
@@ -312,7 +312,7 @@ $app->get('/br/history', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/history.twig', array(
     'currentNav' => 'history_br',
-    'currentNavTitle' => 'Os noivos'
+    'currentNavTitle' => 'Os Noivos'
   ));
 });
 
@@ -328,7 +328,7 @@ $app->get('/br/presents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/presents.twig', array(
     'currentNav' => 'present_br',
-    'currentNavTitle' => 'Lista de Presentes'
+    'currentNavTitle' => 'Lista de presentes'
   ));
 });
 
@@ -345,7 +345,7 @@ $app->get('/br/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/organisation.twig', array(
     'currentNav' => 'organisation_br',
-    'currentNavTitle' => 'Organização'
+    'currentNavTitle' => 'Programação'
   ));
 });
 
@@ -353,7 +353,7 @@ $app->get('/br/org/info', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/info.twig', array(
     'currentNav' => 'org/info_br',
-    'currentNavTitle' => 'Organização'
+    'currentNavTitle' => 'Programação'
   ));
 });
 
@@ -361,7 +361,7 @@ $app->get('/br/org/program', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/program.twig', array(
     'currentNav' => 'org/program_br',
-    'currentNavTitle' => 'Organização'
+    'currentNavTitle' => 'Programação'
   ));
 });
 
@@ -369,7 +369,7 @@ $app->get('/br/org/trips', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/trips.twig', array(
     'currentNav' => 'org/trips_br',
-    'currentNavTitle' => 'Organização'
+    'currentNavTitle' => 'Programação'
   ));
 });
 

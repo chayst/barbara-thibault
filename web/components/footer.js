@@ -8,15 +8,15 @@ let music = "Écoutez notre playlist";
 // BR - Conditions of attributions when on portuguese pages
 //general rule
 if (currentNav.includes("_br")) {
-  //rename footer items
-  contact = "Contatto";
-  music = "Escute a nossa playlist";
+    //rename footer items
+    contact = "Entre em contato conosco";
+    music = "Escute nossa playlist";
 }
 
 const footerTemplate = document.createElement("template");
 
 footerTemplate.innerHTML =
-  `
+    `
     <style>
         footer
         {
@@ -62,28 +62,28 @@ footerTemplate.innerHTML =
         </div>
         <div>
             <a href="mailto:contact@barbara-thibault.fr"><p>` +
-  contact +
-  `</p>
+    contact +
+    `</p>
             <p>contact@barbara-thibault.fr</p></a>
         </div>
         <div>
             <p>` +
-  music +
-  `</p>
+    music +
+    `</p>
             <p><iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5TYrt1ew8AH6baS2IgsR9E?utm_source=generator&theme=0" width="80%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></p>
         </div>
     </footer>
 `;
 
 class Footer extends HTMLElement {
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  connectedCallback() {
-    const shadowRoot = this.attachShadow({ mode: "open" });
-    shadowRoot.appendChild(footerTemplate.content);
-  }
+    connectedCallback() {
+        const shadowRoot = this.attachShadow({ mode: "open" });
+        shadowRoot.appendChild(footerTemplate.content);
+    }
 }
 
 customElements.define("footer-component", Footer);

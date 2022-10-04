@@ -458,7 +458,7 @@ td a::after {
     padding: 10px;
     background-image: linear-gradient(var(--dark), var(--dark)), linear-gradient(var(--dark), var(--dark)), linear-gradient(var(--dark), var(--dark)), linear-gradient(var(--dark), var(--dark)), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
-    background-size: 2px 30px, 30px 2px, 2px 30px, 30px 2px, calc(100% - 8px) calc(100% - 8px);
+    background-size: 2px 20px, 20px 2px, 2px 20px, 20px 2px, calc(100% - 8px) calc(100% - 8px);
     background-position: left bottom, left bottom, right top, right top, 2px 2px;
 }
 

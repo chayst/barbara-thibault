@@ -8,15 +8,15 @@ let redirectBR = '';
 
 //name titles to default french
 let homeTitle = 'Accueil';
-let historyTitle = 'Notre Histoire';
+let historyTitle = 'Les Mariés';
 let witnessesTitle = 'Nos Témoins';
 let organisationTitle = 'Organisation';
 let infoTitle = "Informations Pratiques";
-let programTitle = 'Programme';
+let programTitle = 'Cérémonie';
 let tripsTitle = 'Voyages';
 let presentsTitle = 'Liste de Cadeaux';
 let presenceTitle = 'Confirmez votre présence';
-let commentTitle = 'Laissez nous un mot';
+let commentTitle = 'Livre d\'Or';
 
 
 
@@ -59,16 +59,16 @@ if (currentNav.includes('_fr')) {
 // IF ON BRAZILIAN WEBSITE - Conditions of attributions when on portuguese pages
 if (currentNav.includes('_br')) {
     //rename nav items
-    homeTitle = 'Entrada';
-    historyTitle = 'Nossa Historia';
+    homeTitle = 'Home';
+    historyTitle = 'Os Noivos';
     witnessesTitle = 'Nossas Testemunhas';
-    organisationTitle = 'Organização';
-    infoTitle = 'Informações práticas';
-    programTitle = 'Programma';
-    tripsTitle = 'Viagems';
-    presentsTitle = 'Lista de Presentes';
-    presenceTitle = 'Confirme sua Presencia';
-    commentTitle = 'Deixa uma palavra';
+    organisationTitle = 'Programação';
+    infoTitle = 'Informações gerais';
+    programTitle = 'Cerimônia';
+    tripsTitle = 'Roteiros';
+    presentsTitle = 'Lista de presentes';
+    presenceTitle = 'Confirme sua presença';
+    commentTitle = 'Mensagem aos noivosa';
 
     //have the right redirections
     redirectBR = root + currentNav.slice(0, -3);
