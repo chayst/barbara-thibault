@@ -1,10 +1,8 @@
 {% extends "layout.html" %} 
 {% block content %}
   {% if cookie==false %}
-    <div id="newDateModal" class="openedModal">
-      <div class="modal-content">
-        <img src="/images/saveNewDate.png" alt="Save the New Date flyer" />
-      </div>
+    <div id="newDateModal">
+      <img src="/images/saveNewDate.png" alt="Save the New Date flyer" />
     </div>
   {% else %}
     {{ cookie }}
