@@ -1,7 +1,12 @@
 {% extends "layout.html" %} 
 {% block content %}
   {% if cookie==false %}
-    <p> Welcome</p>
+    <div id="newDateModal" class="openedModal">
+      <div class="modal-content">
+        <span class="closeModal">&times;</span>
+        <img src="/images/saveNewDate.png" alt="Save the New Date flyer" />
+      </div>
+    </div>
   {% else %}
     {{ cookie }}
   {% endif %}
@@ -25,5 +30,17 @@
   }
 
   updateCountDown();
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    openedModal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      openedModal.style.display = "none";
+    }
+  }
 </script>
 {% endblock %}
