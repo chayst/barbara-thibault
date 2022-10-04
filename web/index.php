@@ -136,6 +136,7 @@ $app->get('/org/trips', function () use ($app) {
 
 // COMMENT HANDLERS
 $app->get('/comment', function() use($app) {
+  $likeCommentError = false;
   $commentsStatement = $app['pdo']->prepare('SELECT *, TO_CHAR(comments.date, \'DD Mon\') AS comment_date FROM comments ORDER BY date DESC LIMIT 50');
   $commentsStatement->execute();
 
@@ -147,6 +148,7 @@ $app->get('/comment', function() use($app) {
 
   return $app['twig']->render('comments.twig', array(
     'comments' => $comments,
+    'likeCommentError' => $likeCommentError,
     'currentNav' => 'comment_fr',
     'currentNavTitle' => 'Livre d\'Or'
   ));
