@@ -135,7 +135,7 @@ $app->post('/addComment', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   $commentsAnalisisStatement = $app['pdo']->prepare('SELECT * FROM comments');
   $commentsAnalisisStatement->execute();
-  $commentsAnalisis = fetchAll();
+  $commentsAnalisis = $commentsAnalisisStatement->fetchAll();
 
   $commentContent = strip_tags($_POST['content']);
   $commentAuthor = strip_tags($_POST['author']);
