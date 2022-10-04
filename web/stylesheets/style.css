@@ -156,8 +156,8 @@ em {
     position: fixed;
     /* Stay in place */
     top: 0;
-    margin-left: auto;
-    margin-right: auto;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 3;
     /* Sit on top */
     width: 100%;
