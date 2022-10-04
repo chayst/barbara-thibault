@@ -154,8 +154,8 @@ em {
 #newDateModal {
     position: fixed;
     /* Stay in place */
-    height: 100%;
-    width: 0;
+    height: 0%;
+    width: 100%;
     z-index: 3;
     left: 0;
     top: 0;
@@ -169,11 +169,7 @@ em {
     /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
 }
 
-#newDateModal>img {
-    top: 50%;
-    left: 50%;
-    transform: translate(50%, 50%);
-}
+#newDateModal>img {}
 
 
 /* - history - */
