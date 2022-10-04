@@ -268,6 +268,7 @@ em {
 }
 
 .witness img {
+    min-width: 50px;
     max-width: 150px;
     height: auto;
     border-right: 1px solid var(--dark);
