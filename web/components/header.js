@@ -236,8 +236,8 @@ headerTemplate.innerHTML = `
         <div id="topHeader">
             <!-- first div is here to center easily but exactly the second div with flex -->
             <div style="visibility:hidden;">FR | BR</div>
-            <div><a href="` + root + languageNav + `home"><img src="../images/logo_names_heart.png" alt="Noms Barbara et Thibault" /></a></div>
-            <div id="languageMenu"><a href="` + redirectFR + `"><img src="../icons/france.png" alt="Logo France" /></a><span style="visibility:hidden;">-</span><span>|</span><span style="visibility:hidden;">-</span><a href="` + redirectBR + `"><img src="../icons/brazil.png" alt="Logo Brésil" /></a></div>
+            <div><a href="` + root + languageNav + `home"><img src="/images/logo_names_heart.png" alt="Noms Barbara et Thibault" /></a></div>
+            <div id="languageMenu"><a href="` + redirectFR + `"><img src="/icons/france.png" alt="Logo France" /></a><span style="visibility:hidden;">-</span><span>|</span><span style="visibility:hidden;">-</span><a href="` + redirectBR + `"><img src="/icons/brazil.png" alt="Logo Brésil" /></a></div>
         </div>
 
         <!-- Navigation menu of the website -->
