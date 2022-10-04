@@ -1,6 +1,6 @@
 {% extends "layout.html" %} 
 {% block content %}
-  {% if (!isset($_COOKIE['CONNECTED_ONCE'])) %}
+  {% if $_COOKIE['CONNECTED_ONCE']!='' %}
     <p> Welcome</p>
   {% else %}
     {{ $_COOKIE['CONNECTED_ONCE'] }}
