@@ -495,8 +495,7 @@ td a::after {
 }
 
 .commentLike>img {
-    margin-left: 2px;
-    margin-right: 4px;
+    margin-left: 2px 4px 2px 2px;
 }
 
 .commentLike:hover {
