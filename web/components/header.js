@@ -9,7 +9,10 @@ let redirectBR = '';
 //name titles to default french
 let homeTitle = 'Accueil';
 let historyTitle = 'Les Mariés';
+let relativesTitle = 'Nos Proches';
 let witnessesTitle = 'Nos Témoins';
+let parentsTitle = 'Nos Parents';
+let childrenTitle = 'Nos Enfants de Choeur';
 let organisationTitle = 'Organisation';
 let infoTitle = "Informations Pratiques";
 let programTitle = 'Cérémonie';
@@ -25,7 +28,7 @@ let commentTitle = 'Livre d\'Or';
 //initialize values
 let homeStatus = '';
 let historyStatus = '';
-let witnessesStatus = '';
+let relativesStatus = '';
 let organisationStatus = '';
 let presentsStatus = '';
 let presenceStatus = '';
@@ -35,8 +38,8 @@ if (currentNav.includes('home')) {
     homeStatus = "id='currentNav'";
 } else if (currentNav.includes('history')) {
     historyStatus = "id='currentNav'";
-} else if (currentNav.includes('witnesses')) {
-    witnessesStatus = "id='currentNav'";
+} else if (currentNav.includes('relatives')) {
+    relativesStatus = "id='currentNav'";
 } else if (currentNav.includes('presents')) {
     presentsStatus = "id='currentNav'";
 } else if (currentNav.includes('presence')) {
@@ -61,14 +64,17 @@ if (currentNav.includes('_br')) {
     //rename nav items
     homeTitle = 'Home';
     historyTitle = 'Os Noivos';
-    witnessesTitle = 'Nossas Testemunhas';
+    relativesTitle = 'Nossos Proximos';
+    witnessesTitle = 'Nossos Padrinhos';
+    parentsTitle = 'Nossos Pais';
+    childrenTitle = 'Nossos Pajens';
     organisationTitle = 'Programação';
     infoTitle = 'Informações gerais';
     programTitle = 'Cerimônia';
     tripsTitle = 'Roteiros';
     presentsTitle = 'Lista de presentes';
     presenceTitle = 'Confirme sua presença';
-    commentTitle = 'Mensagem aos noivosa';
+    commentTitle = 'Mensagem aos noivos';
 
     //have the right redirections
     redirectBR = root + currentNav.slice(0, -3);
@@ -245,11 +251,17 @@ headerTemplate.innerHTML = `
             <ul>
                 <li><a ` + homeStatus + `href="` + root + languageNav + `home">` + homeTitle + `</a></li>
                 <li><a ` + historyStatus + `href="` + root + languageNav + `history">` + historyTitle + `</a></li>
-                <li><a ` + witnessesStatus + `href="` + root + languageNav + `witnesses">` + witnessesTitle + `</a></li>
+                <li class="navParentOff"><a ` + relativesStatus + `href="` + root + languageNav + `relatives">` + relativesTitle + `</a>
+                    <ul class="navChildOff">
+                        <li><a href="` + root + languageNav + `rel/witnesses">` + witnessesTitle + `</a></li>
+                        <li><a href="` + root + languageNav + `rel/parents">` + parentsTitle + `</a></li>
+                        <li><a href="` + root + languageNav + `rel/children">` + childrenTitle + `</a></li>
+                    </ul>
+                </li>
                 <li class="navParentOff"><a ` + organisationStatus + `href="` + root + languageNav + `organisation">` + organisationTitle + `</a>
                     <ul class="navChildOff">
-                    <li><a href="` + root + languageNav + `org/info">` + infoTitle + `</a></li>
-                    <li><a href="` + root + languageNav + `org/program">` + programTitle + `</a></li>
+                        <li><a href="` + root + languageNav + `org/info">` + infoTitle + `</a></li>
+                        <li><a href="` + root + languageNav + `org/program">` + programTitle + `</a></li>
                         <li><a href="` + root + languageNav + `org/trips">` + tripsTitle + `</a></li>
                     </ul>
                 </li>

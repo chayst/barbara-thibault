@@ -96,14 +96,6 @@ $app->get('/history', function () use ($app) {
   ));
 });
 
-$app->get('/witnesses', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('witnesses.twig', array(
-    'currentNav' => 'witnesses_fr',
-    'currentNavTitle' => 'Nos Témoins'
-  ));
-});
-
 $app->get('/presents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('presents.twig', array(
@@ -117,6 +109,39 @@ $app->get('/presence', function () use ($app) {
   return $app['twig']->render('presence.twig', array(
     'currentNav' => 'presence_fr',
     'currentNavTitle' => 'Confirmez votre Présence'
+  ));
+});
+
+//REL HANDLERS
+$app->get('/relatives', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('relatives.twig', array(
+    'currentNav' => 'relatives_fr',
+    'currentNavTitle' => 'Nos Proches'
+  ));
+});
+
+$app->get('/rel/witnesses', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('witnesses.twig', array(
+    'currentNav' => 'relatives_fr',
+    'currentNavTitle' => 'Nos Témoins'
+  ));
+});
+
+$app->get('/rel/parents', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('parents.twig', array(
+    'currentNav' => 'relatives_fr',
+    'currentNavTitle' => 'Nos Parents'
+  ));
+});
+
+$app->get('/rel/children', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('children.twig', array(
+    'currentNav' => 'relatives_fr',
+    'currentNavTitle' => 'Nos Enfants de Choeur'
   ));
 });
 
@@ -316,14 +341,6 @@ $app->get('/br/history', function () use ($app) {
   ));
 });
 
-$app->get('/br/witnesses', function () use ($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('br/witnesses.twig', array(
-    'currentNav' => 'witnesses_br',
-    'currentNavTitle' => 'Nossos Padrinhos'
-  ));
-});
-
 $app->get('/br/presents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/presents.twig', array(
@@ -337,6 +354,39 @@ $app->get('/br/presence', function () use ($app) {
   return $app['twig']->render('br/presence.twig', array(
     'currentNav' => 'presence_br',
     'currentNavTitle' => 'Confirme sua presença'
+  ));
+});
+
+//REL HANDLERS
+$app->get('/br/relatives', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/relatives.twig', array(
+    'currentNav' => 'relatives_br',
+    'currentNavTitle' => 'Nossos Proximos'
+  ));
+});
+
+$app->get('/br/rel/witnesses', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/witnesses.twig', array(
+    'currentNav' => 'relatives_br',
+    'currentNavTitle' => 'Nossos Padrinhos'
+  ));
+});
+
+$app->get('/br/rel/parents', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/parents.twig', array(
+    'currentNav' => 'relatives_br',
+    'currentNavTitle' => 'Nossos Pais'
+  ));
+});
+
+$app->get('/br/rel/children', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/children.twig', array(
+    'currentNav' => 'relatives_br',
+    'currentNavTitle' => 'Nossos Pajens'
   ));
 });
 

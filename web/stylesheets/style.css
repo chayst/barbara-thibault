@@ -231,7 +231,7 @@ em {
     border-left: 2px solid;
 }
 
-.witness {
+.people {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -239,13 +239,13 @@ em {
     padding-bottom: 50px;
 }
 
-.witness p {
+.people p {
     margin-left: 20px;
     max-width: 400px;
     min-width: 250px;
 }
 
-.witness p::first-letter {
+.people p::first-letter {
     font-size: 2.3rem;
     line-height: 2.3rem;
     position: relative;
@@ -253,7 +253,7 @@ em {
     display: block;
 }
 
-.witness img {
+.people img {
     max-width: 150px;
     height: auto;
     border-right: 1px solid var(--dark);
@@ -261,9 +261,9 @@ em {
 }
 
 
-/* - organisation - */
+/* - Menu Page - */
 
-#organisationBody {
+#menupageBody {
     display: flex;
     flex-direction: column;
     align-items: center;
