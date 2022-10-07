@@ -1,7 +1,7 @@
 {% extends "layout.html" %} 
 {% block content %}
 <div class="people">
-    <img src="/images/parents/guitton.png" alt="Picture Guitton & Thibault" />
+    <img src="/images/witnesses/guitton.png" alt="Picture Guitton & Thibault" />
     <p>
         Guitton, ou devrais-je dire plutôt Ouaich Guiiiiiittonnnnnn!<br/>
         Même si le hasard fait que nous ne sommes pas dans la même classe quand nous rentrons en maths sup (entre l'Ellipse et la Taupe, il y a un monde...), c'est notre amour de la SI qui nous rapprochera l'année suivante. Avec un jeune Castrais (et pas castré, faîtes attention à vous), nous avons bien profité d'une belle année ensemble sous les leçons de Baudy et les histoires de Jaku (la chaussette!!)<br/>
@@ -9,18 +9,18 @@
         Depuis, bien d'autres histoires, bien d'autres moments de complicité qui me mènent aujourd'hui à te demander:<br/>
         Hehe, il faut cliquer maintenant!
     </p>
-    <button id="validate">Clique!</button>
 </div>
-<div id="newDateModal">
+<button id="validate">Clique!</button>
+<div id="newDateModalGuitton">
     Acceptes-tu de devenir l'un de mes témoins de mariage?
 </div>
 
 
 
 <script>
-  var modal = document.getElementById("newDateModal");
+  var modal = document.getElementById("newDateModalGuitton");
   var button = document.getElementById("validate");
-  
+
   // When the user clicks anywhere outside of the modal, close it
   button.addEventListener("click", function() {
       modal.style.height = "100%";
