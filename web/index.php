@@ -566,6 +566,14 @@ $app->post('/br/addComment', function () use ($app) {
 // });
 
 
+$app->get('/laguitte', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('guitton.twig', array(
+    'currentNav' => 'home_fr',
+    'currentNavTitle' => 'Ouaich Guittonnnnn!'
+  ));
+});
+
 
 
 
