@@ -70,7 +70,7 @@ footerTemplate.innerHTML =
             <p>` +
     music +
     `</p>
-            <p><iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5TYrt1ew8AH6baS2IgsR9E?utm_source=generator&theme=0" width="80%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></p>
+            <p><iframe src="https://open.spotify.com/embed?uri=spotify%3Aplaylist%3A5TYrt1ew8AH6baS2IgsR9E" width="80%" height="80" frameborder="0" style="border-radius: 12px;"allowtransparency="true" allow="encrypted-media"></iframe></p>
         </div>
     </footer>
 `;
