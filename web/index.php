@@ -124,7 +124,7 @@ $app->get('/relatives', function () use ($app) {
 $app->get('/rel/witnesses', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('witnesses.twig', array(
-    'currentNav' => 'relatives_fr',
+    'currentNav' => 'rel/witnesses_fr',
     'currentNavTitle' => 'Nos Témoins'
   ));
 });
@@ -132,7 +132,7 @@ $app->get('/rel/witnesses', function () use ($app) {
 $app->get('/rel/parents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('parents.twig', array(
-    'currentNav' => 'relatives_fr',
+    'currentNav' => 'rel/parents_fr',
     'currentNavTitle' => 'Nos Parents'
   ));
 });
@@ -140,7 +140,7 @@ $app->get('/rel/parents', function () use ($app) {
 $app->get('/rel/children', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('children.twig', array(
-    'currentNav' => 'relatives_fr',
+    'currentNav' => 'rel/children_fr',
     'currentNavTitle' => 'Nos Enfants de Choeur'
   ));
 });
@@ -158,7 +158,7 @@ $app->get('/org/info', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('info.twig', array(
     'currentNav' => 'org/info_fr',
-    'currentNavTitle' => 'Organisation'
+    'currentNavTitle' => 'Informations Pratiques'
   ));
 });
 
@@ -166,7 +166,7 @@ $app->get('/org/program', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('program.twig', array(
     'currentNav' => 'org/program_fr',
-    'currentNavTitle' => 'Organisation'
+    'currentNavTitle' => 'Programme'
   ));
 });
 
@@ -174,7 +174,7 @@ $app->get('/org/trips', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('trips.twig', array(
     'currentNav' => 'org/trips_fr',
-    'currentNavTitle' => 'Organisation'
+    'currentNavTitle' => 'Propositions de Voyages'
   ));
 });
 
@@ -369,7 +369,7 @@ $app->get('/br/relatives', function () use ($app) {
 $app->get('/br/rel/witnesses', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/witnesses.twig', array(
-    'currentNav' => 'relatives_br',
+    'currentNav' => 'rel/witnesses_br',
     'currentNavTitle' => 'Nossos Padrinhos'
   ));
 });
@@ -377,7 +377,7 @@ $app->get('/br/rel/witnesses', function () use ($app) {
 $app->get('/br/rel/parents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/parents.twig', array(
-    'currentNav' => 'relatives_br',
+    'currentNav' => 'rel/parents_br',
     'currentNavTitle' => 'Nossos Pais'
   ));
 });
@@ -385,7 +385,7 @@ $app->get('/br/rel/parents', function () use ($app) {
 $app->get('/br/rel/children', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/children.twig', array(
-    'currentNav' => 'relatives_br',
+    'currentNav' => 'rel/children_br',
     'currentNavTitle' => 'Nossos Pajens'
   ));
 });
@@ -403,7 +403,7 @@ $app->get('/br/org/info', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/info.twig', array(
     'currentNav' => 'org/info_br',
-    'currentNavTitle' => 'Programação'
+    'currentNavTitle' => 'Informações Gerais'
   ));
 });
 
@@ -411,7 +411,7 @@ $app->get('/br/org/program', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/program.twig', array(
     'currentNav' => 'org/program_br',
-    'currentNavTitle' => 'Programação'
+    'currentNavTitle' => 'Cerimônia'
   ));
 });
 
@@ -419,7 +419,7 @@ $app->get('/br/org/trips', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/trips.twig', array(
     'currentNav' => 'org/trips_br',
-    'currentNavTitle' => 'Programação'
+    'currentNavTitle' => 'Proposições de Roteiros'
   ));
 });
 
