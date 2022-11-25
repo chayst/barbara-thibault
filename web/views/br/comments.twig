@@ -3,12 +3,12 @@
 {% block content %}
 <div id="commentBody">
     <div id="commentForm">    
-        <h1>Mandem uma mensagem para os noivos</h1>
-        <form method="post" action="addComment">
+        <h1>Mande uma mensagem para os noivos</h1>
+        <form method="post" action="/br/addComment">
             <label>Comentario:</label><br/>
             <textarea name="content" id="comment" placeholder="Seu mensagem para os noivos" rows="4" cols="60" required></textarea>
             <input type="text" name="author" placeholder="Seu nome" required />
-            <input type="submit" value="Envoyer" />
+            <input type="submit" value="Enviar" />
         </form>
         <p><em>Uma vez enviado, seu comentario sera publicado na lista que você pode achar aqui em baixo.</em></p>
     </div>
@@ -22,7 +22,7 @@
           <div class="singleComment">
             <p><span class="commentAuthor">{{ c.author }}</span> <span class="commentDate">{{ c.comment_date }}</span></p>
             <p><span class="commentContent">{{ c.content }}</span></ps>
-            <form method="post" action="likeComment">
+            <form method="post" action="/br/likeComment">
               <input type="hidden" name="id" value="{{ c.id }}" />
               <button type="submit" class="commentLike" name="like" value="{{ c.likes }}"><img src="/icons/like_dark.png" alt="likeIcon" /> {{ c.likes }}</button>
             </form>
