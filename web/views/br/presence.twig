@@ -16,46 +16,28 @@
         <form method="post" action="../rsc/forms/presenceFormAction.php">
             <h3>Informations Personnelles</h3>
             <p>
-                <label>Votre Prénom :</label>
-                <input type="text" name="firstName" id="firstName" placeholder="Barbara" required />
-                <label>Votre Nom :</label>
-                <input type="text" name="lastName" id="lastName" placeholder="Chays" required />
-            </p>
-            <p>
-                <label>Votre Email :</label>
+                <label>Votre nom :</label>
+                <input type="text" name="name" id="name" placeholder="Thibault Chays" required /><br/>
+                <label>Votre email :</label>
                 <input type="email" name="email" id="email" required />
-                <label>Votre Numéro de Téléphone :</label>
-                <input type="tel" name="email" id="email" />
             </p>
             <h3>Présence mariage</h3>
             <p>
                 <label>Venez-vous au mariage?</label>
-                <input type="radio" name="dDay" value="present" id="present"/><label>Oui</label>
+                <input type="radio" name="dDay" value="present" id="present" required/><label>Oui</label>
                 <input type="radio" name="dDay" value="absent" id="absent"/><label>Non</label>
             </p>
-            <h3>Informations plus détaillés</h3>
+            <h3>Si présent - Informations plus détaillés</h3>
             <p>
-                <label>Qui de votre invitation viendra au cocktail?</label>
-                <input type="text" name="cocktailPresent" id="cocktailPresent" placeholder="Anne, Arturo et les 2 enfants" />
-                <label> - à la réception?</label>
+                <label>Quels invités seront présents au cocktail?</label>
+                <input type="text" name="cocktailPresent" id="cocktailPresent" placeholder="Anne, Arturo et les 2 enfants" /><br/>
+                <label>Quels sont ceux présents à la réception?</label>
                 <input type="text" name="dinerPresent" id="dinerPresent" placeholder="Anne, Arturo et les 2 enfants" />
-            </p>
-            <p>
-                <label>Devons-nous prévoir un repas végétarien pour au moins l'un de vos invités?</label><br/>
-                <input type="radio" name="vegan" value="vegan" id="vegan"/><label>Oui</label>
-                <label> - combien? </label><input type="number" name="vegan" id="vegan"/>
-                <input type="radio" name="vegan" value="noVegan" id="noVegan"/><label>Non</label>
-            </p>
-            <p>
-                <label>Comptez-vous être présent au lendemain?</label><br/>
-                <input type="radio" name="otherDay" value="otherDayPresent" id="otherDayPresent"/><label>Oui</label>
-                <input type="radio" name="otherDay" value="otherDayAbsent" id="otherDayAbsent"/><label>Non</label>
-                <input type="radio" name="otherDay" value="otherDayNone" id="otherDayNone"/><label>Je ne sais pas</label>
             </p>
             <h3>Commentaires</h3>
             <p>
-                <label>Commentaire :</label><br/>
-                <textarea name="comment" id="comment" placeholder="J'ai une question concernant la liste des hôtels..." rows="4" cols="60"></textarea><br/>
+                <label>Commentaire</label><br/>
+                <textarea name="comment" id="comment" placeholder="Veuillez rentrer votre commentaire"/>
             </p>
             <input type="submit" value="Valider" />
         </form>

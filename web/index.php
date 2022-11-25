@@ -349,8 +349,54 @@ $app->get('/br/presents', function () use ($app) {
   ));
 });
 
+// PRESENCE
+//navigation
 $app->get('/br/presence', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/presence.twig', array(
+    'currentNav' => 'presence_br',
+    'currentNavTitle' => 'Confirme sua presença'
+  ));
+});
+
+//mailto
+$app->post('/br/respondPresence', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  $presenceName = strip_tags($_POST['name']);
+  $presenceMail = strip_tags($_POST['email']);
+  $presenceStatus = strip_tags($_POST['dDay']);
+  $presenceCocktailList = strip_tags($_POST['cocktailPresent']);
+  $presenceDinerList = strip_tags($_POST['dinerPresent']);
+  $presenceComment = strip_tags($_POST['comment']);
+  $respondPresenceError = false;
+  $to='contact@barbara-thibault.fr';
+
+  if (!isset($presenceName) || !isset($presenceMail) || !isset($presenceStatus)) {
+    $respondPresenceError = 'There has been an error. Please retry later.';
+  } else if ($presenceStatus == 'absent') {
+    $subject='Absent for the wedding - ' . $presenceName;
+    $message='Unfortunately, I will not be able to make it to the wedding.<br/>' . $presenceComment;
+    $headers = array(
+      'From' => $presenceMail
+    );
+    $mail($to, $subject, $message, $headers);
+  } else {
+    $subject='Present for the wedding - ' . $presenceName;
+    $message='
+    Hello Thibault and Barbara,<br/>
+    I am very happy to let you know that I will be present to your wedding on 20th May 2023.<br/>
+    Here are my information:<br/>
+    Who will be present at the <b>cocktail</b>?' . $presenceCocktailList . '
+    <br/>
+    Who will be present at the <b>diner</b>?' . $presenceDinerList . '
+    <br/>
+    My comments are the following:<br/>' . $presenceComment;
+    $headers = array(
+      'From' => $presenceMail
+    );
+    $mail($to, $subject, $message, $headers);
+  }
+
   return $app['twig']->render('br/presence.twig', array(
     'currentNav' => 'presence_br',
     'currentNavTitle' => 'Confirme sua presença'
