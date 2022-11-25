@@ -99,7 +99,7 @@ $app->get('/history', function () use ($app) {
 $app->get('/presents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('presents.twig', array(
-    'currentNav' => 'present_fr',
+    'currentNav' => 'presents_fr',
     'currentNavTitle' => 'Liste de Cadeaux'
   ));
 });
@@ -344,7 +344,7 @@ $app->get('/br/history', function () use ($app) {
 $app->get('/br/presents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/presents.twig', array(
-    'currentNav' => 'present_br',
+    'currentNav' => 'presents_br',
     'currentNavTitle' => 'Lista de presentes'
   ));
 });
