@@ -38,7 +38,7 @@ if (currentNav.includes('home')) {
     homeStatus = "id='currentNav'";
 } else if (currentNav.includes('history')) {
     historyStatus = "id='currentNav'";
-} else if (currentNav.includes('relatives')) {
+} else if (currentNav.includes('relatives') || currentNav.includes('rel/')) {
     relativesStatus = "id='currentNav'";
 } else if (currentNav.includes('presents')) {
     presentsStatus = "id='currentNav'";
