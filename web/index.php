@@ -56,7 +56,8 @@ $app->get('/', function () use ($app) {
   return $app['twig']->render('index.twig', array(
     'cookie' => $cookie,
     'currentNav' => 'home_fr',
-    'currentNavTitle' => 'Accueil'
+    'currentNavTitle' => 'Accueil',
+    'styleLink' => 'style'
   ));
 });
 
@@ -84,7 +85,8 @@ $app->get('/home', function () use ($app) {
   return $app['twig']->render('index.twig', array(
     'cookie' => $cookie,
     'currentNav' => 'home_fr',
-    'currentNavTitle' => 'Accueil'
+    'currentNavTitle' => 'Accueil',
+    'styleLink' => 'style'
   ));
 });
 
@@ -92,7 +94,8 @@ $app->get('/history', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('history.twig', array(
     'currentNav' => 'history_fr',
-    'currentNavTitle' => 'Les Mariés'
+    'currentNavTitle' => 'Les Mariés',
+    'styleLink' => 'style'
   ));
 });
 
@@ -100,7 +103,8 @@ $app->get('/presents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('presents.twig', array(
     'currentNav' => 'presents_fr',
-    'currentNavTitle' => 'Liste de Cadeaux'
+    'currentNavTitle' => 'Liste de Cadeaux',
+    'styleLink' => 'style'
   ));
 });
 
@@ -108,7 +112,8 @@ $app->get('/presence', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('presence.twig', array(
     'currentNav' => 'presence_fr',
-    'currentNavTitle' => 'Confirmez votre Présence'
+    'currentNavTitle' => 'Confirmez votre Présence',
+    'styleLink' => 'style'
   ));
 });
 
@@ -117,7 +122,8 @@ $app->get('/relatives', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('relatives.twig', array(
     'currentNav' => 'relatives_fr',
-    'currentNavTitle' => 'Nos Proches'
+    'currentNavTitle' => 'Nos Proches',
+    'styleLink' => 'style'
   ));
 });
 
@@ -125,7 +131,8 @@ $app->get('/rel/witnesses', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('witnesses.twig', array(
     'currentNav' => 'rel/witnesses_fr',
-    'currentNavTitle' => 'Nos Témoins'
+    'currentNavTitle' => 'Nos Témoins',
+    'styleLink' => 'style'
   ));
 });
 
@@ -133,7 +140,8 @@ $app->get('/rel/parents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('parents.twig', array(
     'currentNav' => 'rel/parents_fr',
-    'currentNavTitle' => 'Nos Parents'
+    'currentNavTitle' => 'Nos Parents',
+    'styleLink' => 'style'
   ));
 });
 
@@ -141,7 +149,8 @@ $app->get('/rel/children', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('children.twig', array(
     'currentNav' => 'rel/children_fr',
-    'currentNavTitle' => 'Nos Enfants de Choeur'
+    'currentNavTitle' => 'Nos Enfants de Choeur',
+    'styleLink' => 'style'
   ));
 });
 
@@ -150,7 +159,8 @@ $app->get('/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('organisation.twig', array(
     'currentNav' => 'organisation_fr',
-    'currentNavTitle' => 'Organisation'
+    'currentNavTitle' => 'Organisation',
+    'styleLink' => 'style'
   ));
 });
 
@@ -158,7 +168,8 @@ $app->get('/org/info', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('info.twig', array(
     'currentNav' => 'org/info_fr',
-    'currentNavTitle' => 'Informations Pratiques'
+    'currentNavTitle' => 'Informations Pratiques',
+    'styleLink' => 'style'
   ));
 });
 
@@ -166,7 +177,8 @@ $app->get('/org/program', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('program.twig', array(
     'currentNav' => 'org/program_fr',
-    'currentNavTitle' => 'Programme'
+    'currentNavTitle' => 'Programme',
+    'styleLink' => 'style'
   ));
 });
 
@@ -174,7 +186,8 @@ $app->get('/org/trips', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('trips.twig', array(
     'currentNav' => 'org/trips_fr',
-    'currentNavTitle' => 'Propositions de Voyages'
+    'currentNavTitle' => 'Propositions de Voyages',
+    'styleLink' => 'style'
   ));
 });
 
@@ -194,7 +207,8 @@ $app->get('/comment', function() use($app) {
     'comments' => $comments,
     'likeCommentError' => $likeCommentError,
     'currentNav' => 'comment_fr',
-    'currentNavTitle' => 'Livre d\'Or'
+    'currentNavTitle' => 'Livre d\'Or',
+    'styleLink' => 'style'
   ));
 });
 
@@ -229,7 +243,8 @@ $app->post('/likeComment', function () use ($app) {
     'comments' => $comments,
     'likeCommentError' => $likeCommentError,
     'currentNav' => 'comment_fr',
-    'currentNavTitle' => 'Livre d\'Or'
+    'currentNavTitle' => 'Livre d\'Or',
+    'styleLink' => 'style'
   ));
 });
 
@@ -298,7 +313,8 @@ $app->post('/addComment', function () use ($app) {
     'defaultContent' => $defaultContent,
     'defaultAuthor' => $defaultAuthor,
     'currentNav' => 'comment_fr',
-    'currentNavTitle' => 'Livre d\'Or'
+    'currentNavTitle' => 'Livre d\'Or',
+    'styleLink' => 'style'
   ));
 });
 
@@ -329,7 +345,8 @@ $app->get('/br/home', function () use ($app) {
   return $app['twig']->render('br/index.twig', array(
     'cookie' => $cookie,
     'currentNav' => 'home_br',
-    'currentNavTitle' => 'Home'
+    'currentNavTitle' => 'Home',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -337,7 +354,8 @@ $app->get('/br/history', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/history.twig', array(
     'currentNav' => 'history_br',
-    'currentNavTitle' => 'Os Noivos'
+    'currentNavTitle' => 'Os Noivos',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -345,7 +363,8 @@ $app->get('/br/presents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/presents.twig', array(
     'currentNav' => 'presents_br',
-    'currentNavTitle' => 'Lista de presentes'
+    'currentNavTitle' => 'Lista de presentes',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -355,7 +374,8 @@ $app->get('/br/presence', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/presence.twig', array(
     'currentNav' => 'presence_br',
-    'currentNavTitle' => 'Confirme sua presença'
+    'currentNavTitle' => 'Confirme sua presença',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -366,7 +386,8 @@ $app->get('/br/relatives', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/relatives.twig', array(
     'currentNav' => 'relatives_br',
-    'currentNavTitle' => 'Nossos Proximos'
+    'currentNavTitle' => 'Nossos Proximos',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -374,7 +395,8 @@ $app->get('/br/rel/witnesses', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/witnesses.twig', array(
     'currentNav' => 'rel/witnesses_br',
-    'currentNavTitle' => 'Nossos Padrinhos'
+    'currentNavTitle' => 'Nossos Padrinhos',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -382,7 +404,8 @@ $app->get('/br/rel/parents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/parents.twig', array(
     'currentNav' => 'rel/parents_br',
-    'currentNavTitle' => 'Nossos Pais'
+    'currentNavTitle' => 'Nossos Pais',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -390,7 +413,8 @@ $app->get('/br/rel/children', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/children.twig', array(
     'currentNav' => 'rel/children_br',
-    'currentNavTitle' => 'Nossos Pajens'
+    'currentNavTitle' => 'Nossos Pajens',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -399,7 +423,8 @@ $app->get('/br/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/organisation.twig', array(
     'currentNav' => 'organisation_br',
-    'currentNavTitle' => 'Programação'
+    'currentNavTitle' => 'Programação',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -407,7 +432,8 @@ $app->get('/br/org/info', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/info.twig', array(
     'currentNav' => 'org/info_br',
-    'currentNavTitle' => 'Informações Gerais'
+    'currentNavTitle' => 'Informações Gerais',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -415,7 +441,8 @@ $app->get('/br/org/program', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/program.twig', array(
     'currentNav' => 'org/program_br',
-    'currentNavTitle' => 'Cerimônia'
+    'currentNavTitle' => 'Cerimônia',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -423,7 +450,8 @@ $app->get('/br/org/trips', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/trips.twig', array(
     'currentNav' => 'org/trips_br',
-    'currentNavTitle' => 'Proposições de Roteiros'
+    'currentNavTitle' => 'Proposições de Roteiros',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -443,7 +471,8 @@ $app->get('/br/comment', function() use($app) {
     'comments' => $comments,
     'likeCommentError' => $likeCommentError,
     'currentNav' => 'comment_br',
-    'currentNavTitle' => 'Mensagem aos noivos'
+    'currentNavTitle' => 'Mensagem aos noivos',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -478,7 +507,8 @@ $app->post('/br/likeComment', function () use ($app) {
     'comments' => $comments,
     'likeCommentError' => $likeCommentError,
     'currentNav' => 'comment_br',
-    'currentNavTitle' => 'Mensagem aos noivos'
+    'currentNavTitle' => 'Mensagem aos noivos',
+    'styleLink' => 'style_br'
   ));
 });
 
@@ -547,7 +577,8 @@ $app->post('/br/addComment', function () use ($app) {
     'defaultContent' => $defaultContent,
     'defaultAuthor' => $defaultAuthor,
     'currentNav' => 'comment_br',
-    'currentNavTitle' => 'Mensagem aos noivos'
+    'currentNavTitle' => 'Mensagem aos noivos',
+    'styleLink' => 'style_br'
   ));
 });
 
