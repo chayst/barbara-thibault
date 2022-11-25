@@ -6,41 +6,9 @@
             Afin de confirmer votre présence, nous vous prions de bien vouloir répondre de l'une des manières suivantes
             <ul>
                 <li>Par courrier à l'une des deux adresses indiquées en bas de la page ;</li>
-                <li>Par email à <a href="mailto:contact@barbara-thibault.fr">contact@barbara-thibault.fr</a> - <em>nous vous enverrons alors une confirmation de bonne réception</em> ;</li>
-                <li>Via le formulaire ci-dessous - <em>nous vous enverrons alors une confirmation de bonne réception</em>.</li>
+                <li>Par email à <a href="mailto:contact@barbara-thibault.fr?subject=Presencia no casamento&body=Nome:%0DPresencia:%0DQuem vem no Cocktail?%0DQuem vem no Jantar?%0DComentarios addicionais: ">contact@barbara-thibault.fr</a> - <em>nous vous enverrons alors une confirmation de bonne réception</em> ;</li>
             </ul>
         </p>
-    </div>
-    <div>
-        <h1>Formulaire - Confirmation de Présence</h1>
-        <form method="post" action="respondPresence">
-            <h3>Informations Personnelles</h3>
-            <p>
-                <label>Votre nom :</label>
-                <input type="text" name="name" id="name" placeholder="Thibault Chays" required /><br/>
-                <label>Votre email :</label>
-                <input type="email" name="email" id="email" required />
-            </p>
-            <h3>Présence mariage</h3>
-            <p>
-                <label>Venez-vous au mariage?</label>
-                <input type="radio" name="dDay" value="present" id="present" required/><label>Oui</label>
-                <input type="radio" name="dDay" value="absent" id="absent"/><label>Non</label>
-            </p>
-            <h3>Si présent - Informations plus détaillés</h3>
-            <p>
-                <label>Quels invités seront présents au cocktail?</label>
-                <input type="text" name="cocktailPresent" id="cocktailPresent" placeholder="Anne, Arturo et les 2 enfants" /><br/>
-                <label>Quels sont ceux présents à la réception?</label>
-                <input type="text" name="dinerPresent" id="dinerPresent" placeholder="Anne, Arturo et les 2 enfants" />
-            </p>
-            <h3>Commentaires</h3>
-            <p>
-                <label>Commentaire</label><br/>
-                <textarea name="comment" id="comment" rows="10" cols="150" placeholder="Veuillez rentrer votre commentaire"></textarea>
-            </p>
-            <input type="submit" value="Valider" />
-        </form>
     </div>
 </section>
 {% endblock %}
