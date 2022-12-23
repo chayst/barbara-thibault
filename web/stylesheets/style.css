@@ -283,7 +283,8 @@ strong {
     height: 250px;
 }
 
-.navPageItemSimple .navPageItem {
+.navPageItemSimple,
+.navPageItem {
     display: flex;
     flex-direction: column;
     margin: 10px 10px 10px 10px;
