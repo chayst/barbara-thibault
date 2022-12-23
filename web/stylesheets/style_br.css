@@ -133,6 +133,10 @@ em {
     font-style: italic;
 }
 
+strong {
+    font-weight: bold;
+}
+
 
 /* --- SPECIFIC TO SINGLE PAGE --- */
 
@@ -331,6 +335,12 @@ aside img {
     height: auto;
 }
 
+#infoTableOfContents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 /* - program - */
 
@@ -417,6 +427,15 @@ td {
 td a::after {
     content: url("../icons/external_link.png");
     padding-left: 3px;
+}
+
+
+/* - dresscode - */
+
+#dresscodeBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
