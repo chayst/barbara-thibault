@@ -12,7 +12,7 @@ let historyTitle = 'Les Mariés';
 let relativesTitle = 'Nos Proches';
 let witnessesTitle = 'Nos Témoins';
 let parentsTitle = 'Nos Parents';
-let childrenTitle = 'Nos Enfants de Choeur';
+let childrenTitle = 'Nos Enfants d\'Honneur';
 let organisationTitle = 'Organisation';
 let infoTitle = "Informations Pratiques";
 let programTitle = 'Cérémonie';
@@ -64,10 +64,10 @@ if (currentNav.includes('_br')) {
     //rename nav items
     homeTitle = 'Home';
     historyTitle = 'Os Noivos';
-    relativesTitle = 'Nossos Proximos';
+    relativesTitle = 'Nossos pais e padrinhos';
     witnessesTitle = 'Nossos Padrinhos';
     parentsTitle = 'Nossos Pais';
-    childrenTitle = 'Nossos Pajens';
+    childrenTitle = 'Nossas Daminhas e nossos Pajens';
     organisationTitle = 'Programação';
     infoTitle = 'Informações gerais';
     programTitle = 'Cerimônia';

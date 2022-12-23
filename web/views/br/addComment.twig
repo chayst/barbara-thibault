@@ -3,34 +3,34 @@
 {% block content %}
 <div id="commentBody">
     <div id="commentForm">    
-        <h1>Laissez-nous un mot</h1>
+        <h1>Deixe uma mensagem para os noivos</h1>
         {% if commentError == true %}
           <p style="color:red;">{{ commentPayload }}</p>
-          <form method="post" action="addComment">
-              <label>Commentaire :</label><br/>
-              <textarea name="content" id="comment" placeholder="Votre message pour les mariés" rows="4" cols="60" required>{{ defaultContent }}</textarea>
-              <input type="text" name="author" placeholder="Votre nom" value="{{ defaultAuthor }}" required/>
-              <input type="submit" value="Envoyer" />
+          <form method="post" action="/br/addComment">
+              <label>Comentário:</label><br/>
+              <textarea name="content" id="comment" placeholder="Escreva sua mensagem" rows="4" cols="60" required>{{ defaultContent }}</textarea>
+              <input type="text" name="author" placeholder="Seu nome" value="{{ defaultAuthor }}" required/>
+              <input type="submit" value="Enviar" />
           </form>
-          <p><em>Une fois envoyé, votre commentaire sera ajouté à la liste que vous pouvez trouver ci-dessous</em>></p>
+          <p><em>Uma vez enviado, sua mensagem será publicada abaixo.</em>></p>
         {% else %}
-          <p style="color:green;">Merci de votre participation.</p>
+          <p style="color:green;">Obrigado pela sua participação.</p>
         {% endif %}
     </div>
     <div>
-        <h1>Ce dont vous nous avez fait part</h1>
+        <h1>Mensagens deixadas para os noivos</h1>
         <section id="comments">
         {% for c in comments %}
           <div class="singleComment">
             <p><span class="commentAuthor">{{ c.author }}</span> <span class="commentDate">{{ c.comment_date }}</span></p>
             <p><span class="commentContent">{{ c.content }}</span></ps>
-            <form method="post" action="/likeComment">
+            <form method="post" action="/br/likeComment">
               <input type="hidden" name="id" value="{{ c.id }}" />
               <button type="submit" class="commentLike" name="like" value="{{ c.likes }}"><img src="/icons/like_dark.png" alt="likeIcon" /> {{ c.likes }}</button>
             </form>
           </div>
         {% else %}
-          <p>Personne n'a encore laissé de commentaire...</p>
+          <p>Seja o primeiro a deixar uma mensagem...</p>
         {% endfor %}
         </section>
     </div>

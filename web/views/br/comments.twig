@@ -3,17 +3,17 @@
 {% block content %}
 <div id="commentBody">
     <div id="commentForm">    
-        <h1>Mande uma mensagem para os noivos</h1>
+        <h1>Deixe uma mensagem para os noivos</h1>
         <form method="post" action="/br/addComment">
-            <label>Comentario:</label><br/>
-            <textarea name="content" id="comment" placeholder="Seu mensagem para os noivos" rows="4" cols="60" required></textarea>
+            <label>Comentário:</label><br/>
+            <textarea name="content" id="comment" placeholder="Escreva sua mensagem" rows="4" cols="60" required></textarea>
             <input type="text" name="author" placeholder="Seu nome" required />
             <input type="submit" value="Enviar" />
         </form>
-        <p><em>Uma vez enviado, seu comentario sera publicado na lista que você pode achar aqui em baixo.</em></p>
+        <p><em>Uma vez enviado, sua mensagem será publicada abaixo.</em></p>
     </div>
     <div>
-        <h1>Os seus mensagems para nos</h1>
+        <h1>Mensagens deixadas para os noivos</h1>
         {% if likeCommentError!=false %}
           <p>{{ likeCommentError }}</p>
         {% endif %}
@@ -28,7 +28,7 @@
             </form>
           </div>
         {% else %}
-          <p>Ninguém deixou comentario ainda...</p>
+          <p>Seja o primeiro a deixar uma mensagem...</p>
         {% endfor %}
         </section>
     </div>

@@ -149,7 +149,7 @@ $app->get('/rel/children', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('children.twig', array(
     'currentNav' => 'rel/children_fr',
-    'currentNavTitle' => 'Nos Enfants de Choeur',
+    'currentNavTitle' => 'Nos Enfants d\'Honneur',
     'styleLink' => 'style'
   ));
 });
@@ -386,7 +386,7 @@ $app->get('/br/relatives', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/relatives.twig', array(
     'currentNav' => 'relatives_br',
-    'currentNavTitle' => 'Nossos Proximos',
+    'currentNavTitle' => 'Nossos pais e padrinhos',
     'styleLink' => 'style_br'
   ));
 });
@@ -413,7 +413,7 @@ $app->get('/br/rel/children', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('br/children.twig', array(
     'currentNav' => 'rel/children_br',
-    'currentNavTitle' => 'Nossos Pajens',
+    'currentNavTitle' => 'Nossas Daminhas e nossos Pajens',
     'styleLink' => 'style_br'
   ));
 });
