@@ -285,6 +285,15 @@ em {
     background-color: var(--dark);
 }
 
+.navPageItemSimple {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px;
+    overflow: scroll;
+    border-radius: 1rem;
+    background-color: var(--dark);
+}
+
 .navPageTitle,
 .navPageContent {
     text-align: center;
