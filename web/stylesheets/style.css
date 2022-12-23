@@ -280,19 +280,15 @@ strong {
 }
 
 .navPageItem {
-    display: flex;
-    flex-direction: column;
     height: 250px;
-    margin: 10px 10px;
-    overflow: scroll;
-    border-radius: 1rem;
-    background-color: var(--dark);
 }
 
-.navPageItemSimple {
+.navPageItemSimple .navPageItem {
     display: flex;
     flex-direction: column;
     margin: 10px 10px 10px 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     overflow: scroll;
     border-radius: 1rem;
     background-color: var(--dark);
