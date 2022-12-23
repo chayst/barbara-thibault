@@ -288,7 +288,7 @@ em {
 .navPageItemSimple {
     display: flex;
     flex-direction: column;
-    margin: 10px 10px;
+    margin: 10px 10px 10px 10px;
     overflow: scroll;
     border-radius: 1rem;
     background-color: var(--dark);
