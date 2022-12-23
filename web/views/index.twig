@@ -15,11 +15,9 @@
 <script>
   const updateCountDown = function() {
     // Jours Restants
-    const weddingDate = new Date(2023, 5, 20);
-    const test = new Date(2022, 12, 24);
+    const weddingDate = new Date(2023, 4, 20);
     const today = new Date();
-    console.log(test)
-    console.log(today)
+    console.log(weddingDate)
     const elapsedTime = weddingDate.getTime() - today.getTime();
     const daysLeft = Math.floor(elapsedTime / (1000 * 3600 * 24));
 
