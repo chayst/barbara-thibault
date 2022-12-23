@@ -17,6 +17,7 @@ let organisationTitle = 'Organisation';
 let infoTitle = "Informations Pratiques";
 let programTitle = 'Cérémonie';
 let tripsTitle = 'Voyages';
+let dresscodeTitle = 'Dress Code';
 let presentsTitle = 'Liste de Cadeaux';
 let presenceTitle = 'Confirmez votre présence';
 let commentTitle = 'Livre d\'Or';
@@ -30,6 +31,7 @@ let homeStatus = '';
 let historyStatus = '';
 let relativesStatus = '';
 let organisationStatus = '';
+let dresscodeStatus = '';
 let presentsStatus = '';
 let presenceStatus = '';
 let commentStatus = '';
@@ -40,6 +42,8 @@ if (currentNav.includes('home')) {
     historyStatus = "id='currentNav'";
 } else if (currentNav.includes('relatives') || currentNav.includes('rel/')) {
     relativesStatus = "id='currentNav'";
+} else if (currentNav.includes('dresscode')) {
+    dresscodeStatus = "id='currentNav'";
 } else if (currentNav.includes('presents')) {
     presentsStatus = "id='currentNav'";
 } else if (currentNav.includes('presence')) {
@@ -72,6 +76,7 @@ if (currentNav.includes('_br')) {
     infoTitle = 'Informações gerais';
     programTitle = 'Cerimônia';
     tripsTitle = 'Roteiros';
+    dresscodeTitle = 'Dress Code';
     presentsTitle = 'Lista de presentes';
     presenceTitle = 'Confirme sua presença';
     commentTitle = 'Mensagem aos noivos';
@@ -265,6 +270,7 @@ headerTemplate.innerHTML = `
                         <li><a href="` + root + languageNav + `org/trips">` + tripsTitle + `</a></li>
                     </ul>
                 </li>
+                <li><a ` + dresscodeStatus + `href="` + root + languageNav + `dresscode">` + dresscodeTitle + `</a></li>
                 <li><a ` + presentsStatus + `href="` + root + languageNav + `presents">` + presentsTitle + `</a></li>
                 <li><a ` + presenceStatus + `href="` + root + languageNav + `presence">` + presenceTitle + `</a></li>
                 <li><a ` + commentStatus + `href="` + root + languageNav + `comment">` + commentTitle + `</a></li>

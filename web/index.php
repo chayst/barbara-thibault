@@ -99,6 +99,15 @@ $app->get('/history', function () use ($app) {
   ));
 });
 
+$app->get('/dresscode', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('dresscode.twig', array(
+    'currentNav' => 'dresscode_fr',
+    'currentNavTitle' => 'Dress Code',
+    'styleLink' => 'style'
+  ));
+});
+
 $app->get('/presents', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('presents.twig', array(
@@ -355,6 +364,15 @@ $app->get('/br/history', function () use ($app) {
   return $app['twig']->render('br/history.twig', array(
     'currentNav' => 'history_br',
     'currentNavTitle' => 'Os Noivos',
+    'styleLink' => 'style_br'
+  ));
+});
+
+$app->get('/br/dresscode', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/dresscode.twig', array(
+    'currentNav' => 'dresscode_br',
+    'currentNavTitle' => 'Dress Code',
     'styleLink' => 'style_br'
   ));
 });
