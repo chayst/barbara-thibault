@@ -183,11 +183,8 @@ strong {
 /* - history - */
 
 #historyBody p::first-letter {
-    font-size: 2.3rem;
-    line-height: 2.3rem;
-    position: relative;
-    float: left;
-    display: block;
+    font-size: 2rem;
+    line-height: 2rem;
 }
 
 #historyBody section article {
@@ -250,11 +247,8 @@ strong {
 }
 
 .people p::first-letter {
-    font-size: 2.3rem;
-    line-height: 2.3rem;
-    position: relative;
-    float: left;
-    display: block;
+    font-size: 2rem;
+    line-height: 2rem;
 }
 
 .people img {
