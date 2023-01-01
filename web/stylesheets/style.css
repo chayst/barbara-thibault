@@ -149,6 +149,8 @@ strong {
     margin-right: auto;
     max-height: 75px;
     width: auto;
+    filter: --dark(100%);
+    -webkit-filter: --dark(100%);
 }
 
 
