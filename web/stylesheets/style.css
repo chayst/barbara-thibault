@@ -149,6 +149,7 @@ strong {
     margin-right: auto;
     max-height: 75px;
     width: auto;
+    color: var(--dark);
 }
 
 
