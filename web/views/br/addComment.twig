@@ -2,7 +2,11 @@
 
 {% block content %}
 <div id="commentBody">
-    <div id="commentForm">    
+    <img
+        src="/images/titles/comments.png"
+        alt="Title logo - comments"
+    />
+    <div id="commentForm">
         <h1>Deixe uma mensagem para os noivos</h1>
         {% if commentError == true %}
           <p style="color:red;">{{ commentPayload }}</p>
