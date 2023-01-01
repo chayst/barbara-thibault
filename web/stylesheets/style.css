@@ -149,8 +149,7 @@ strong {
     margin-right: auto;
     max-height: 75px;
     width: auto;
-    filter: var(--dark)(100%);
-    -webkit-filter: var(--dark)(100%);
+    filter: invert(27%) sepia(3%) saturate(6261%) hue-rotate(246deg) brightness(89%) contrast(92%);
 }
 
 
