@@ -138,6 +138,16 @@ strong {
 }
 
 
+/* --- images --- */
+
+.titleLogo {
+    display: flex;
+    align-self: center;
+    max-height: 50px;
+    width: auto;
+}
+
+
 /* --- SPECIFIC TO SINGLE PAGE --- */
 
 
