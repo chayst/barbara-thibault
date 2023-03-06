@@ -163,6 +163,15 @@ $app->get('/rel/children', function () use ($app) {
   ));
 });
 
+$app->get('/rel/specials', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('specials.twig', array(
+    'currentNav' => 'rel/specials_fr',
+    'currentNavTitle' => 'Personnes spéciales',
+    'styleLink' => 'style'
+  ));
+});
+
 //ORG HANDLERS
 $app->get('/organisation', function () use ($app) {
   $app['monolog']->addDebug('logging output.');
@@ -432,6 +441,15 @@ $app->get('/br/rel/children', function () use ($app) {
   return $app['twig']->render('br/children.twig', array(
     'currentNav' => 'rel/children_br',
     'currentNavTitle' => 'Nossas Daminhas e nossos Pajens',
+    'styleLink' => 'style_br'
+  ));
+});
+
+$app->get('/br/rel/specials', function () use ($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('br/specials.twig', array(
+    'currentNav' => 'rel/specials_br',
+    'currentNavTitle' => 'Pessoas espaciais',
     'styleLink' => 'style_br'
   ));
 });

@@ -13,6 +13,7 @@ let relativesTitle = 'Nos Proches';
 let witnessesTitle = 'Nos Témoins';
 let parentsTitle = 'Nos Parents';
 let childrenTitle = 'Nos Enfants d\'Honneur';
+let specialsTitle = 'Personnes Spéciales';
 let organisationTitle = 'Organisation';
 let infoTitle = "Informations Pratiques";
 let programTitle = 'Cérémonie';
@@ -72,6 +73,7 @@ if (currentNav.includes('_br')) {
     witnessesTitle = 'Nossos Padrinhos';
     parentsTitle = 'Nossos Pais';
     childrenTitle = 'Nossas Daminhas e nossos Pajens';
+    specialsTitle = 'Pessoas Especiais';
     organisationTitle = 'Programação';
     infoTitle = 'Informações gerais';
     programTitle = 'Cerimônia';
@@ -261,6 +263,7 @@ headerTemplate.innerHTML = `
                         <li><a href="` + root + languageNav + `rel/witnesses">` + witnessesTitle + `</a></li>
                         <li><a href="` + root + languageNav + `rel/parents">` + parentsTitle + `</a></li>
                         <li><a href="` + root + languageNav + `rel/children">` + childrenTitle + `</a></li>
+                        <li><a href="` + root + languageNav + `rel/specials">` + specialsTitle + `</a></li>
                     </ul>
                 </li>
                 <li class="navParentOff"><a ` + organisationStatus + `href="` + root + languageNav + `organisation">` + organisationTitle + `</a>
