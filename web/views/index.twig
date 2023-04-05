@@ -1,10 +1,5 @@
 {% extends "layout.html" %} 
 {% block content %}
-  {% if cookie==false %}
-    <div id="newDateModal">
-      <img src="/images/saveNewDate.png" alt="Save the New Date flyer" />
-    </div>
-  {% endif %}
 <div id="homeBody">
 <img
   src="/images/titles/fr/home.png"
@@ -22,7 +17,6 @@
     // Jours Restants
     const weddingDate = new Date(2023, 4, 20);
     const today = new Date();
-    console.log(weddingDate)
     const elapsedTime = weddingDate.getTime() - today.getTime();
     const daysLeft = Math.floor(elapsedTime / (1000 * 3600 * 24));
 
@@ -31,16 +25,5 @@
   }
 
   updateCountDown();
-</script>
-<script>
-  var modal = document.getElementById("newDateModal");
-  modal.style.height = "100%";
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.addEventListener("click", function(event) {
-    if (event.target == modal) {
-      modal.style.height = "0%";
-    }
-  });
 </script>
 {% endblock %}
